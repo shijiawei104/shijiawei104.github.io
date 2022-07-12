@@ -427,10 +427,16 @@ yarn global bin //查找yarn安装目录
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-07-01 14:42:55 / 修改时间：17:26:19" itemprop="dateCreated datePublished" datetime="2022-07-01T14:42:55+08:00">2022-07-01</time>
+              <time title="创建时间：2022-07-01 14:42:55" itemprop="dateCreated datePublished" datetime="2022-07-01T14:42:55+08:00">2022-07-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-12 15:45:00" itemprop="dateModified" datetime="2022-07-12T15:45:00+08:00">2022-07-12</time>
+              </span>
 
           
 
@@ -446,7 +452,11 @@ yarn global bin //查找yarn安装目录
           <h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p><img src="/../imgs/1.png" alt="alt text"><br><img src="/../imgs/2.png" alt="alt text"><br>解决办法：将第一个this改为window</p>
 <hr>
 <h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3><p><img src="/../imgs/3.png" alt="alt text"><br>解决办法: &#x2F;&#x2F;#ifdef H5  …  &#x2F;&#x2F;#endif<br>使其只在h5端运行</p>
-
+<h3 id="3-使用wx-miniProgram跳转小程序页面时要注意跳转的页面是否为tabbar页，tabbar页面需要switchTab才能跳转成功"><a href="#3-使用wx-miniProgram跳转小程序页面时要注意跳转的页面是否为tabbar页，tabbar页面需要switchTab才能跳转成功" class="headerlink" title="3.使用wx.miniProgram跳转小程序页面时要注意跳转的页面是否为tabbar页，tabbar页面需要switchTab才能跳转成功,"></a>3.使用wx.miniProgram跳转小程序页面时要注意跳转的页面是否为tabbar页，tabbar页面需要switchTab才能跳转成功,</h3><pre><code>                wx.miniProgram.switchTab(&#123;
+           url: &#39;/pages/index/index&#39;
+         &#125;)
+</code></pre>
+<h3 id="4-wx-navigateTo跳转的页面层级太多导致无法跳转-微信小程序规定子页面最多跳转5层，层级过多会导致跳转失败"><a href="#4-wx-navigateTo跳转的页面层级太多导致无法跳转-微信小程序规定子页面最多跳转5层，层级过多会导致跳转失败" class="headerlink" title="4.wx.navigateTo跳转的页面层级太多导致无法跳转,微信小程序规定子页面最多跳转5层，层级过多会导致跳转失败"></a>4.wx.navigateTo跳转的页面层级太多导致无法跳转,微信小程序规定子页面最多跳转5层，层级过多会导致跳转失败</h3>
       
     </div>
 
