@@ -506,7 +506,7 @@ yarn global bin //查找yarn安装目录
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-12 14:57:30" itemprop="dateModified" datetime="2022-07-12T14:57:30+08:00">2022-07-12</time>
+                <time title="修改时间：2022-07-14 15:17:38" itemprop="dateModified" datetime="2022-07-14T15:17:38+08:00">2022-07-14</time>
               </span>
 
           
@@ -536,11 +536,19 @@ yarn global bin //查找yarn安装目录
 </code></pre>
 <h3 id="5-将本地内容推送到远程仓库"><a href="#5-将本地内容推送到远程仓库" class="headerlink" title="5.将本地内容推送到远程仓库"></a>5.将本地内容推送到远程仓库</h3><pre><code>git push origin 分支名字
 </code></pre>
+<h4 id="u-若当前分支与多个主机存在追踪关系"><a href="#u-若当前分支与多个主机存在追踪关系" class="headerlink" title="-u 若当前分支与多个主机存在追踪关系"></a>-u 若当前分支与多个主机存在追踪关系</h4><pre><code>git push -u origin 分支名字
+</code></pre>
+<h3 id="f-强制将本地的修改覆盖了远程仓库的版本，将其他人的commit都冲掉，而且无法使用通常的git-reset方式回退"><a href="#f-强制将本地的修改覆盖了远程仓库的版本，将其他人的commit都冲掉，而且无法使用通常的git-reset方式回退" class="headerlink" title="-f 强制将本地的修改覆盖了远程仓库的版本，将其他人的commit都冲掉，而且无法使用通常的git reset方式回退"></a>-f 强制将本地的修改覆盖了远程仓库的版本，将其他人的commit都冲掉，而且无法使用通常的git reset方式回退</h3><pre><code>git push -u origin 分支名字 -f
+</code></pre>
 <h3 id="6-切换分支"><a href="#6-切换分支" class="headerlink" title="6.切换分支"></a>6.切换分支</h3><pre><code>git checkout 分支名字
 </code></pre>
-<h3 id="7-合并分支"><a href="#7-合并分支" class="headerlink" title="7.合并分支"></a>7.合并分支</h3><pre><code>git merge 分支名字
+<h3 id="7-合并分支-（区别：merge-会多出一次-merge-commit，rebase不会，merge-的提交树是非线性的，rebase-的提交树是线性的（通过重写提交历史）；merge在分支上都是好几条弯弯曲曲的样子，rebase就一条直线）"><a href="#7-合并分支-（区别：merge-会多出一次-merge-commit，rebase不会，merge-的提交树是非线性的，rebase-的提交树是线性的（通过重写提交历史）；merge在分支上都是好几条弯弯曲曲的样子，rebase就一条直线）" class="headerlink" title="7.合并分支 （区别：merge 会多出一次 merge commit，rebase不会，merge 的提交树是非线性的，rebase 的提交树是线性的（通过重写提交历史）；merge在分支上都是好几条弯弯曲曲的样子，rebase就一条直线）"></a>7.合并分支 （区别：merge 会多出一次 merge commit，rebase不会，merge 的提交树是非线性的，rebase 的提交树是线性的（通过重写提交历史）；merge在分支上都是好几条弯弯曲曲的样子，rebase就一条直线）</h3><pre><code>git merge 分支名字
+git rebase 分支名字
 </code></pre>
 <h3 id="8-拉取远程仓库代码"><a href="#8-拉取远程仓库代码" class="headerlink" title="8.拉取远程仓库代码"></a>8.拉取远程仓库代码</h3><pre><code>git pull origin 分支名字
+</code></pre>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他:"></a>其他:</h3><pre><code>关联远程仓库地址：git remote add origin http://xxxx@git
+初始化仓库:git init
 </code></pre>
 
       
