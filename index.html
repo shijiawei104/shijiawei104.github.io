@@ -176,7 +176,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-28 14:33:04" itemprop="dateModified" datetime="2022-07-28T14:33:04+08:00">2022-07-28</time>
+                <time title="修改时间：2022-07-28 16:55:07" itemprop="dateModified" datetime="2022-07-28T16:55:07+08:00">2022-07-28</time>
               </span>
 
           
@@ -190,134 +190,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <pre><code>1.vue2：
-objec.defineProperty()
-不能监听数组的变化，
-必须遍历对象的每一个属性
-
-vue3:
-Proxy
-不需要遍历
-
-2.setup语法糖插件：unplugin-auto-import
-解决场景:在组件中开发无需每次引入import
-下载安装：npm i unplugin-auto-import -D
-配置：vivt.config.js中
-import &#123; defineConfig &#125; from &#39;vite&#39;
-import vue from &#39;@vitejs/plugin-vue&#39;
-import AutoImport from &#39;unplugin-auto-import/vite&#39;
-
-// https://vitejs.dev/config/
-export default defineConfig(&#123;
-plugins: [
-vue(),
-AutoImport(&#123;
-imports:[&#39;vue&#39;,&#39;vue-router&#39;] //自动导入vue和vue-router相关函数
-&#125;)
-]
-&#125;)
-
-3.toRefs:进行数据解构
-4.
-监听一个
-watch(msg, (newVal,oldVal)=&gt;&#123;
-    console.log(newVal)        
-&#125;,&#123;
-    //初始值
-    immediate:true
-&#125;)
-多个
-watch([msg,str], (newVal,oldVal)=&gt;&#123;
-    console.log(newVal)        
-&#125;,&#123;
-    //初始值
-    immediate:true
-&#125;)
-监听“对象”中某个对象
-watch(() =&gt; obj.arr, (newVal,oldVal)=&gt;&#123;
-    console.log(newVal)        
-&#125;)
-立即执行监听函数
-watchEffect(()=&gt;&#123;
-    console.log(msg.value)
-&#125;)
-5.生命周期
-vue2:选项式API beforeCreate、created
-vue3:setup 组合式API
-6.路由
-useRoute =&gt;this.$route
-useRouter =&gt;this.$router
-7.父传子
-父组件： import引入子组件后不用commponts
-        let msg = ref(&#39;这是父传过去的数据&#39;)
-子组件:  1.setup语法糖
-        import &#123;defineProps&#125; from &#39;vue&#39;
-        defineProps(&#123;
-            msg:&#123;
-                type:String,
-                default:&#39;1&#39;
-            &#125;
-        &#125;)
-        2.选项式API
-        props:[&#39;msg&#39;],
-        setup(props)&#123;
-            let obj = props.msg
-            return&#123;
-                obj
-            &#125; 
-        &#125;
-8.子传父
-子组件：
-    1.组合式
-     let num = ref(100)
-     const emit = defineEmits([&#39;fn&#39;])
-    const changeNum=()=&gt;&#123;
-        emit(&#39;fn&#39;,num)
-    &#125;
-    2.选项式
-    setup(props,&#123;emit&#125;)&#123;
-        let num = ref(100)
-        const changNum=()=&gt;&#123;
-            emit(&#39;fn&#39;,num)
-        &#125;
-        return&#123;
-            num,
-            changeNum
-        &#125;
-    &#125;
-父组件:
-&lt;List @fn=&quot;changeHome&quot; /&gt;
-let changeHome=(n)=&gt;&#123;
-    console.log(n.value)    
-&#125;
-
-9.父子组件双向数据
-父组件：&lt;List  v-model:num=&#39;num&#39; /&gt;
-        let num = ref(1)
-子组件：const props=defineProps(&#123;
-        num:&#123;
-            type: Number,
-            default: 100,
-        &#125;
-    &#125;)
-        const emit=defineEmits([&#39;update:num&#39;])
-        const btn(()=&gt;&#123;
-            emit(&#39;uodate:num&#39;,200)
-        &#125;)
-
-10.插槽
-匿名插槽 
-具名插槽: 父：v-slot:xxx(简写：#xxx)  子：&lt;slot name:xxx&gt;&lt;/slot&gt; 
-作用域插槽：内容包裹在一个拥有单个参数的函数里  动态插槽:绑定动态数据，可以进行切换
-
-11.Teleport:传送内容到具体标签里面（必须有这个dom的内容）
-&lt;teleport to=&#39;#container&#39;&gt;&lt;/teleport&gt;
-&lt;teleport to=&#39;.main&#39;&gt;&lt;/teleport&gt;
-&lt;teleport to=&#39;body&#39;&gt;&lt;/teleport&gt;
-
-12.动态组件：
-&lt;component :is=&quot;动态去切换组件&quot; /&gt;
-</code></pre>
+          <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">1.</span>vue2：</span><br><span class="line">objec.<span class="title function_">defineProperty</span>()</span><br><span class="line">不能监听数组的变化，</span><br><span class="line">必须遍历对象的每一个属性</span><br><span class="line"></span><br><span class="line"><span class="attr">vue3</span>:</span><br><span class="line"><span class="title class_">Proxy</span></span><br><span class="line">不需要遍历</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>setup语法糖插件：unplugin-auto-<span class="keyword">import</span></span><br><span class="line">解决场景:在组件中开发无需每次引入<span class="keyword">import</span></span><br><span class="line">下载安装：npm i unplugin-auto-<span class="keyword">import</span> -D</span><br><span class="line">配置：vivt.<span class="property">config</span>.<span class="property">js</span>中</span><br><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span></span><br><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">&#x27;@vitejs/plugin-vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">AutoImport</span> <span class="keyword">from</span> <span class="string">&#x27;unplugin-auto-import/vite&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// https://vitejs.dev/config/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line"><span class="attr">plugins</span>: [</span><br><span class="line"><span class="title function_">vue</span>(),</span><br><span class="line"><span class="title class_">AutoImport</span>(&#123;</span><br><span class="line"><span class="attr">imports</span>:[<span class="string">&#x27;vue&#x27;</span>,<span class="string">&#x27;vue-router&#x27;</span>] <span class="comment">//自动导入vue和vue-router相关函数</span></span><br><span class="line">&#125;)</span><br><span class="line">]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span><span class="attr">toRefs</span>:进行数据解构</span><br><span class="line"><span class="number">4.</span></span><br><span class="line">监听一个</span><br><span class="line"><span class="title function_">watch</span>(msg, <span class="function">(<span class="params">newVal,oldVal</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(newVal)        </span><br><span class="line">&#125;,&#123;</span><br><span class="line">    <span class="comment">//初始值</span></span><br><span class="line">    <span class="attr">immediate</span>:<span class="literal">true</span></span><br><span class="line">&#125;)</span><br><span class="line">多个</span><br><span class="line"><span class="title function_">watch</span>([msg,str], <span class="function">(<span class="params">newVal,oldVal</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(newVal)        </span><br><span class="line">&#125;,&#123;</span><br><span class="line">    <span class="comment">//初始值</span></span><br><span class="line">    <span class="attr">immediate</span>:<span class="literal">true</span></span><br><span class="line">&#125;)</span><br><span class="line">监听“对象”中某个对象</span><br><span class="line"><span class="title function_">watch</span>(<span class="function">() =&gt;</span> obj.<span class="property">arr</span>, <span class="function">(<span class="params">newVal,oldVal</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(newVal)        </span><br><span class="line">&#125;)</span><br><span class="line">立即执行监听函数</span><br><span class="line"><span class="title function_">watchEffect</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(msg.<span class="property">value</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="number">5.</span>生命周期</span><br><span class="line"><span class="attr">vue2</span>:选项式<span class="variable constant_">API</span> beforeCreate、created</span><br><span class="line"><span class="attr">vue3</span>:setup 组合式<span class="variable constant_">API</span></span><br><span class="line"><span class="number">6.</span>路由</span><br><span class="line">useRoute =&gt;<span class="variable language_">this</span>.<span class="property">$route</span></span><br><span class="line">useRouter =&gt;<span class="variable language_">this</span>.<span class="property">$router</span></span><br><span class="line"><span class="number">7.</span>父传子</span><br><span class="line">父组件： <span class="keyword">import</span>引入子组件后不用commponts</span><br><span class="line">        <span class="keyword">let</span> msg = <span class="title function_">ref</span>(<span class="string">&#x27;这是父传过去的数据&#x27;</span>)</span><br><span class="line">子组件:  <span class="number">1.</span>setup语法糖</span><br><span class="line">        <span class="keyword">import</span> &#123;defineProps&#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">        <span class="title function_">defineProps</span>(&#123;</span><br><span class="line">            <span class="attr">msg</span>:&#123;</span><br><span class="line">                <span class="attr">type</span>:<span class="title class_">String</span>,</span><br><span class="line">                <span class="attr">default</span>:<span class="string">&#x27;1&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="number">2.</span>选项式<span class="variable constant_">API</span></span><br><span class="line">        <span class="attr">props</span>:[<span class="string">&#x27;msg&#x27;</span>],</span><br><span class="line">        <span class="title function_">setup</span>(<span class="params">props</span>)&#123;</span><br><span class="line">            <span class="keyword">let</span> obj = props.<span class="property">msg</span></span><br><span class="line">            <span class="keyword">return</span>&#123;</span><br><span class="line">                obj</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line"><span class="number">8.</span>子传父</span><br><span class="line">子组件：</span><br><span class="line">    <span class="number">1.</span>组合式</span><br><span class="line">     <span class="keyword">let</span> num = <span class="title function_">ref</span>(<span class="number">100</span>)</span><br><span class="line">     <span class="keyword">const</span> emit = <span class="title function_">defineEmits</span>([<span class="string">&#x27;fn&#x27;</span>])</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">changeNum</span>=(<span class="params"></span>)=&gt;&#123;</span><br><span class="line">        <span class="title function_">emit</span>(<span class="string">&#x27;fn&#x27;</span>,num)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">2.</span>选项式</span><br><span class="line">    <span class="title function_">setup</span>(<span class="params">props,&#123;emit&#125;</span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> num = <span class="title function_">ref</span>(<span class="number">100</span>)</span><br><span class="line">        <span class="keyword">const</span> <span class="title function_">changNum</span>=(<span class="params"></span>)=&gt;&#123;</span><br><span class="line">            <span class="title function_">emit</span>(<span class="string">&#x27;fn&#x27;</span>,num)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>&#123;</span><br><span class="line">            num,</span><br><span class="line">            changeNum</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">父组件:</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">List</span> @<span class="attr">fn</span>=<span class="string">&quot;changeHome&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">changeHome</span>=(<span class="params">n</span>)=&gt;&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(n.<span class="property">value</span>)    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">9.</span>父子组件双向数据</span><br><span class="line">父组件：&lt;<span class="title class_">List</span>  v-<span class="attr">model</span>:num=<span class="string">&#x27;num&#x27;</span> /&gt;</span><br><span class="line">        <span class="keyword">let</span> num = <span class="title function_">ref</span>(<span class="number">1</span>)</span><br><span class="line">子组件：<span class="keyword">const</span> props=<span class="title function_">defineProps</span>(&#123;</span><br><span class="line">        <span class="attr">num</span>:&#123;</span><br><span class="line">            <span class="attr">type</span>: <span class="title class_">Number</span>,</span><br><span class="line">            <span class="attr">default</span>: <span class="number">100</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">        <span class="keyword">const</span> emit=<span class="title function_">defineEmits</span>([<span class="string">&#x27;update:num&#x27;</span>])</span><br><span class="line">        <span class="keyword">const</span> <span class="title function_">btn</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">            <span class="title function_">emit</span>(<span class="string">&#x27;uodate:num&#x27;</span>,<span class="number">200</span>)</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line"><span class="number">10.</span>插槽</span><br><span class="line">匿名插槽 </span><br><span class="line">具名插槽: 父：v-<span class="attr">slot</span>:<span class="title function_">xxx</span>(简写：#xxx)  子：&lt;slot <span class="attr">name</span>:xxx&gt;&lt;/slot&gt; </span><br><span class="line">作用域插槽：内容包裹在一个拥有单个参数的函数里  动态插槽:绑定动态数据，可以进行切换</span><br><span class="line"></span><br><span class="line"><span class="number">11.</span><span class="title class_">Teleport</span>:传送内容到具体标签里面（必须有这个dom的内容）</span><br><span class="line">&lt;teleport to=<span class="string">&#x27;#container&#x27;</span>&gt;&lt;/teleport&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">teleport</span> <span class="attr">to</span>=<span class="string">&#x27;.main&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">teleport</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">teleport</span> <span class="attr">to</span>=<span class="string">&#x27;body&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">teleport</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="number">12.</span>动态组件：</span><br><span class="line">&lt;component :is=<span class="string">&quot;动态去切换组件&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -360,10 +233,16 @@ let changeHome=(n)=&gt;&#123;
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-07-19 17:01:10 / 修改时间：17:16:58" itemprop="dateCreated datePublished" datetime="2022-07-19T17:01:10+08:00">2022-07-19</time>
+              <time title="创建时间：2022-07-19 17:01:10" itemprop="dateCreated datePublished" datetime="2022-07-19T17:01:10+08:00">2022-07-19</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-28 16:54:16" itemprop="dateModified" datetime="2022-07-28T16:54:16+08:00">2022-07-28</time>
+              </span>
 
           
 
@@ -376,65 +255,7 @@ let changeHome=(n)=&gt;&#123;
     <div class="post-body" itemprop="articleBody">
 
       
-          <pre><code>import axios from &quot;axios&quot;;
-
-// 使用create创建axios实例
-const Service=axios.create(&#123;
-timeout:8000,
-baseURL:&quot;http:xxxxx/&quot;,
-headers:&#123;
-    &quot;Content-type&quot;:&quot;application/json;charset=utf-8&quot;,
-    &quot;Authorization&quot; : 登陆后拿到的token
-&#125;
-&#125;)
-
-// 请求拦截-增加loading,对请求做统一处理
-Service.interceptors.request.use(config=&gt;&#123;
-loadingObj=ElLoading.service(&#123;
-    lock: true,
-    text: &#39;Loading&#39;,
-    background: &#39;rgba(0, 0, 0, 0.7)&#39;,
-  &#125;)
-  return config
-&#125;)
-
-// 响应拦截-对返回值做统一处理
-Service.interceptors.response.use(response=&gt;&#123;
-const data=response.data
-return data
-&#125;,error=&gt;&#123;
-&#125;)
-
-// post请求
-export const post=config=&gt;&#123;
-return Service(&#123;
-...config,
-method:&quot;post&quot;,
-data:config.data
-&#125;)
-&#125;
-
-// get请求
-export const get=config=&gt;&#123;
-return Service(&#123;
-...config,
-method:&quot;get&quot;,
-params:config.data
-&#125;)
-&#125;
-</code></pre>
-<h5 id="接口封装"><a href="#接口封装" class="headerlink" title="接口封装"></a>接口封装</h5><pre><code>import &#123;get,post&#125; from &quot;./service&quot;
-export const loginApi=data=&gt;&#123;
-return post(&#123;
-    url:&#39;/login&#39;,
-    data
-&#125;)
-&#125;
-</code></pre>
-<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><pre><code>import &#123;loginApi&#125; from &quot;@/util/request&quot;
-
-loginApi(data).then(res=&gt;&#123;&#125;)
-</code></pre>
+          <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&quot;axios&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 使用create创建axios实例</span></span><br><span class="line">    <span class="keyword">const</span> <span class="title class_">Service</span>=axios.<span class="title function_">create</span>(&#123;</span><br><span class="line">    <span class="attr">timeout</span>:<span class="number">8000</span>,</span><br><span class="line">    <span class="attr">baseURL</span>:<span class="string">&quot;http:xxxxx/&quot;</span>,</span><br><span class="line">    <span class="attr">headers</span>:&#123;</span><br><span class="line">        <span class="string">&quot;Content-type&quot;</span>:<span class="string">&quot;application/json;charset=utf-8&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Authorization&quot;</span> : 登陆后拿到的token</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 请求拦截-增加loading,对请求做统一处理</span></span><br><span class="line">    <span class="title class_">Service</span>.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="function"><span class="params">config</span>=&gt;</span>&#123;</span><br><span class="line">    loadingObj=<span class="title class_">ElLoading</span>.<span class="title function_">service</span>(&#123;</span><br><span class="line">        <span class="attr">lock</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">text</span>: <span class="string">&#x27;Loading&#x27;</span>,</span><br><span class="line">        <span class="attr">background</span>: <span class="string">&#x27;rgba(0, 0, 0, 0.7)&#x27;</span>,</span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">return</span> config</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 响应拦截-对返回值做统一处理</span></span><br><span class="line">    <span class="title class_">Service</span>.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(<span class="function"><span class="params">response</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> data=response.<span class="property">data</span></span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">    &#125;,<span class="function"><span class="params">error</span>=&gt;</span>&#123;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// post请求</span></span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">post</span>=config=&gt;&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Service</span>(&#123;</span><br><span class="line">    ...config,</span><br><span class="line">    <span class="attr">method</span>:<span class="string">&quot;post&quot;</span>,</span><br><span class="line">    <span class="attr">data</span>:config.<span class="property">data</span></span><br><span class="line">    &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// get请求</span></span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">get</span>=config=&gt;&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Service</span>(&#123;</span><br><span class="line">    ...config,</span><br><span class="line">    <span class="attr">method</span>:<span class="string">&quot;get&quot;</span>,</span><br><span class="line">    <span class="attr">params</span>:config.<span class="property">data</span></span><br><span class="line">    &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">##### 接口封装</span><br><span class="line">    <span class="keyword">import</span> &#123;get,post&#125; <span class="keyword">from</span> <span class="string">&quot;./service&quot;</span></span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">loginApi</span>=data=&gt;&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">post</span>(&#123;</span><br><span class="line">        <span class="attr">url</span>:<span class="string">&#x27;/login&#x27;</span>,</span><br><span class="line">        data</span><br><span class="line">    &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">##### 使用</span><br><span class="line">    <span class="keyword">import</span> &#123;loginApi&#125; <span class="keyword">from</span> <span class="string">&quot;@/util/request&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="title function_">loginApi</span>(data).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;&#125;)</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
 
       
     </div>
