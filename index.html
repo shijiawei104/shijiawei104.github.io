@@ -145,6 +145,198 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/22/vue3%E6%96%B0%E7%89%B9%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="shijiawei104">
+      <meta itemprop="description" content="个人笔记">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shijiawei104">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/22/vue3%E6%96%B0%E7%89%B9%E6%80%A7/" class="post-title-link" itemprop="url">vue3新特性</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-07-22 14:52:49" itemprop="dateCreated datePublished" datetime="2022-07-22T14:52:49+08:00">2022-07-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-28 14:33:04" itemprop="dateModified" datetime="2022-07-28T14:33:04+08:00">2022-07-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <pre><code>1.vue2：
+objec.defineProperty()
+不能监听数组的变化，
+必须遍历对象的每一个属性
+
+vue3:
+Proxy
+不需要遍历
+
+2.setup语法糖插件：unplugin-auto-import
+解决场景:在组件中开发无需每次引入import
+下载安装：npm i unplugin-auto-import -D
+配置：vivt.config.js中
+import &#123; defineConfig &#125; from &#39;vite&#39;
+import vue from &#39;@vitejs/plugin-vue&#39;
+import AutoImport from &#39;unplugin-auto-import/vite&#39;
+
+// https://vitejs.dev/config/
+export default defineConfig(&#123;
+plugins: [
+vue(),
+AutoImport(&#123;
+imports:[&#39;vue&#39;,&#39;vue-router&#39;] //自动导入vue和vue-router相关函数
+&#125;)
+]
+&#125;)
+
+3.toRefs:进行数据解构
+4.
+监听一个
+watch(msg, (newVal,oldVal)=&gt;&#123;
+    console.log(newVal)        
+&#125;,&#123;
+    //初始值
+    immediate:true
+&#125;)
+多个
+watch([msg,str], (newVal,oldVal)=&gt;&#123;
+    console.log(newVal)        
+&#125;,&#123;
+    //初始值
+    immediate:true
+&#125;)
+监听“对象”中某个对象
+watch(() =&gt; obj.arr, (newVal,oldVal)=&gt;&#123;
+    console.log(newVal)        
+&#125;)
+立即执行监听函数
+watchEffect(()=&gt;&#123;
+    console.log(msg.value)
+&#125;)
+5.生命周期
+vue2:选项式API beforeCreate、created
+vue3:setup 组合式API
+6.路由
+useRoute =&gt;this.$route
+useRouter =&gt;this.$router
+7.父传子
+父组件： import引入子组件后不用commponts
+        let msg = ref(&#39;这是父传过去的数据&#39;)
+子组件:  1.setup语法糖
+        import &#123;defineProps&#125; from &#39;vue&#39;
+        defineProps(&#123;
+            msg:&#123;
+                type:String,
+                default:&#39;1&#39;
+            &#125;
+        &#125;)
+        2.选项式API
+        props:[&#39;msg&#39;],
+        setup(props)&#123;
+            let obj = props.msg
+            return&#123;
+                obj
+            &#125; 
+        &#125;
+8.子传父
+子组件：
+    1.组合式
+     let num = ref(100)
+     const emit = defineEmits([&#39;fn&#39;])
+    const changeNum=()=&gt;&#123;
+        emit(&#39;fn&#39;,num)
+    &#125;
+    2.选项式
+    setup(props,&#123;emit&#125;)&#123;
+        let num = ref(100)
+        const changNum=()=&gt;&#123;
+            emit(&#39;fn&#39;,num)
+        &#125;
+        return&#123;
+            num,
+            changeNum
+        &#125;
+    &#125;
+父组件:
+&lt;List @fn=&quot;changeHome&quot; /&gt;
+let changeHome=(n)=&gt;&#123;
+    console.log(n.value)    
+&#125;
+
+9.父子组件双向数据
+父组件：&lt;List  v-model:num=&#39;num&#39; /&gt;
+        let num = ref(1)
+子组件：const props=defineProps(&#123;
+        num:&#123;
+            type: Number,
+            default: 100,
+        &#125;
+    &#125;)
+        const emit=defineEmits([&#39;update:num&#39;])
+        const btn(()=&gt;&#123;
+            emit(&#39;uodate:num&#39;,200)
+        &#125;)
+
+10.插槽
+匿名插槽 
+具名插槽: 父：v-slot:xxx(简写：#xxx)  子：&lt;slot name:xxx&gt;&lt;/slot&gt; 
+作用域插槽：内容包裹在一个拥有单个参数的函数里  动态插槽:绑定动态数据，可以进行切换
+
+11.Teleport:传送内容到具体标签里面（必须有这个dom的内容）
+&lt;teleport to=&#39;#container&#39;&gt;&lt;/teleport&gt;
+&lt;teleport to=&#39;.main&#39;&gt;&lt;/teleport&gt;
+&lt;teleport to=&#39;body&#39;&gt;&lt;/teleport&gt;
+
+12.动态组件：
+&lt;component :is=&quot;动态去切换组件&quot; /&gt;
+</code></pre>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/19/axios%E5%B0%81%E8%A3%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -323,65 +515,6 @@ loginApi(data).then(res=&gt;&#123;&#125;)
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/12/%E7%94%B5%E8%84%91%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="shijiawei104">
-      <meta itemprop="description" content="个人笔记">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="shijiawei104">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/07/12/%E7%94%B5%E8%84%91%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">电脑重装系统教程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-07-12 10:54:56 / 修改时间：11:13:47" itemprop="dateCreated datePublished" datetime="2022-07-12T10:54:56+08:00">2022-07-12</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>下载大白菜U盘启动工具<br><a target="_blank" rel="noopener" href="http://dbc.hrblxjy.top/making.html">http://dbc.hrblxjy.top/making.html</a><br>按照网站教程操作<br>系统镜像推荐到官网下载:<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/software-download/windows10">https://www.microsoft.com/zh-cn/software-download/windows10</a><br>重装后需要系统激活工具激活</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/12/%E6%9C%AC%E5%9C%B0%E6%98%BE%E7%A4%BA%E9%83%A8%E7%BD%B2%E5%90%8E%E5%8D%9A%E5%AE%A2%E9%A1%B5%E9%9D%A2%E6%9C%AA%E6%9B%B4%E6%96%B0%EF%BC%88Github%E5%B7%B2%E6%9B%B4%E6%96%B0%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -405,10 +538,16 @@ loginApi(data).then(res=&gt;&#123;&#125;)
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-07-12 10:37:35 / 修改时间：10:48:58" itemprop="dateCreated datePublished" datetime="2022-07-12T10:37:35+08:00">2022-07-12</time>
+              <time title="创建时间：2022-07-12 10:37:35" itemprop="dateCreated datePublished" datetime="2022-07-12T10:37:35+08:00">2022-07-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-28 16:38:29" itemprop="dateModified" datetime="2022-07-28T16:38:29+08:00">2022-07-28</time>
+              </span>
 
           
 
@@ -427,7 +566,7 @@ loginApi(data).then(res=&gt;&#123;&#125;)
 <h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><pre><code> hexo clean
  hexo g -d
 </code></pre>
-<h6 id="md语法文档：https-markdown-com-cn-basic-syntax"><a href="#md语法文档：https-markdown-com-cn-basic-syntax" class="headerlink" title="md语法文档：https://markdown.com.cn/basic-syntax/"></a>md语法文档：<a target="_blank" rel="noopener" href="https://markdown.com.cn/basic-syntax/">https://markdown.com.cn/basic-syntax/</a></h6>
+<h6 id="md语法文档：https-markdown-com-cn-basic-syntax-hexo"><a href="#md语法文档：https-markdown-com-cn-basic-syntax-hexo" class="headerlink" title="md语法文档：https://markdown.com.cn/basic-syntax/hexo"></a>md语法文档：<a target="_blank" rel="noopener" href="https://markdown.com.cn/basic-syntax/hexo">https://markdown.com.cn/basic-syntax/hexo</a></h6>
       
     </div>
 
@@ -477,7 +616,7 @@ loginApi(data).then(res=&gt;&#123;&#125;)
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-21 13:26:59" itemprop="dateModified" datetime="2022-07-21T13:26:59+08:00">2022-07-21</time>
+                <time title="修改时间：2022-07-21 13:46:36" itemprop="dateModified" datetime="2022-07-21T13:46:36+08:00">2022-07-21</time>
               </span>
 
           
@@ -500,6 +639,8 @@ yarn global bin //查找yarn安装目录
 </code></pre>
 <p>（1）执行完这段命令后会有选项，根据自己的需求进行选择，一般选最后一个<br>（2）进入下一个选项，选择要安装的插件依赖，根据自己的需求来进行选择，按空格键就可以进行选择<br>（3）因为上一步我选择了css Pre-processors，所以下一步会让我选择css的预处理语言<br>（4）下一个选项一般选package.json<br>(5)此选项默认不保存就行，直接回车下一步<br>（5)环境搭建成功，cd进入项目目录<br>（6）yarn serve启动项目就可以了</p>
 <h3 id="vite"><a href="#vite" class="headerlink" title="vite:"></a>vite:</h3><pre><code>yarn create vite 项目名
+yarn create @vitejs/app 项目名
+npm init @vitejs/app 项目名
 </code></pre>
 <h3 id="创建uniapp-上接第一条"><a href="#创建uniapp-上接第一条" class="headerlink" title="创建uniapp (上接第一条)"></a>创建uniapp (上接第一条)</h3><ol>
 <li>  vue create -p dcloudio&#x2F;uni-preset-vue 项目名<br>(安装失败：npm uninstall vue-cli -g 或 yarn global remove vue-cli （@vue&#x2F;cli） 卸载)<br>（官方文档：<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/quickstart-cli.html%EF%BC%89">https://uniapp.dcloud.io/quickstart-cli.html）</a></li>
