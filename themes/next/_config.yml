@@ -24,7 +24,7 @@ custom_file_path:
   #sidebar: source/_data/sidebar.njk
   #postMeta: source/_data/post-meta.njk
   #postBodyEnd: source/_data/post-body-end.njk
-  #footer: source/_data/footer.njk
+  footer: source/_data/footer.njk
   #bodyEnd: source/_data/body-end.njk
   #variable: source/_data/variables.styl
   #mixin: source/_data/mixins.styl
@@ -150,11 +150,11 @@ sidebar:
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
-  url: #/images/avatar.gif
+  url: /images/avatar.jpeg
   # If true, the avatar will be displayed in circle.
-  rounded: false
+  rounded: true
   # If true, the avatar will be rotated with the cursor.
-  rotated: false
+  rotated: true
 
 # Posts / Categories / Tags in sidebar.
 site_state: true
@@ -370,9 +370,10 @@ body_scrollbar:
 codeblock:
   # Code Highlight theme
   # All available themes: https://theme-next.js.org/highlight/
+  highlight_theme: night eighties
   theme:
-    light: default
-    dark: stackoverflow-dark
+    light: a11y-dark
+    dark: a11y-dark
   prism:
     light: prism
     dark: prism-dark
@@ -928,8 +929,5 @@ css: css
 js: js
 images: images
 
-# Code Highlight theme
-# Available value: normal | night | night eighties | night blue | night bright
-# https://github.com/chriskempson/tomorrow-theme
-highlight_theme: night
+
 

@@ -3,6 +3,7 @@ title: vue3新特性
 date: 2022-11-23 21:53:13
 tags:
 ---
+```js
 ### 1.vue2：
 objec.defineProperty()
 不能监听数组的变化，
@@ -130,3 +131,4 @@ let changeHome=(n)=>{
 
 ### 12.动态组件：
 <component :is="动态去切换组件" />
+```
