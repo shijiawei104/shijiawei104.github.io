@@ -11,4 +11,4 @@ tags:
 #### 3.
  `hexo clean`
  `hexo g -d`
-### md 语法文档：https://markdown.com.cn/basic-syntax/hexo
+### md 语法文档：https://markdown.com.cn/
