@@ -1,6 +1,8 @@
 ---
 title: websocket结合ftv.js实现视频直播流播放
 date: 2022-11-25 08:45:40
+categories:
+- vue
 tags:
 ---
 

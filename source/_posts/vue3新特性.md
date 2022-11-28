@@ -1,6 +1,8 @@
 ---
 title: vue3新特性
 date: 2022-11-23 21:53:13
+categories:
+- vue
 tags:
 ---
 ```js

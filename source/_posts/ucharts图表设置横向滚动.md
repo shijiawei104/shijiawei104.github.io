@@ -1,6 +1,8 @@
 ---
 title: ucharts图表设置横向滚动
 date: 2022-11-25 09:24:38
+categories:
+- Ucharts
 tags:
 ---
 ### 使用ucharts图表时，当x轴数据过多，就需要设置横向滚动显示

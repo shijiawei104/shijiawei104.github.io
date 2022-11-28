@@ -1,6 +1,8 @@
 ---
 title: 本地显示部署后博客页面未更新（Github 已更新）
 date: 2022-11-23 21:51:00
+categories: 
+- hexo
 tags:
 ---
 ### 原文：https://blog.csdn.net/ruvikm/article/details/122419378

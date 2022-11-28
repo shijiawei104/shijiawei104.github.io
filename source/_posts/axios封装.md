@@ -2,6 +2,8 @@
 layout: axios
 title: axios 封装
 date: 2022-11-23 14:54:32
+categories:
+- vue
 tags:
 ---
 # axios封装

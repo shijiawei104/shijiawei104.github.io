@@ -1,6 +1,8 @@
 ---
 title: git常用命令步骤
 date: 2022-11-23 20:13:48
+categories:
+- git
 tags:
 ---
 ### 1. 克隆仓库
