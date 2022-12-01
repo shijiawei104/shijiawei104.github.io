@@ -6,7 +6,7 @@ categories:
 tags:
 ---
 ```js
-const config = require('@/config/index.js'); // 请求的base URL
+import config from '@/config/index.js' // 请求的base URL
  
 const getTokenHandle = () => {  
     return uni.getStorageSync('token')  // 获取登录用户token
@@ -43,7 +43,7 @@ const sendRequest = (method = 'GET', url = '', params = {}, ) => {
     let promise = new Promise(async (resolve, reject) => {
         let token = await getTokenHandle();
 		console.log(getTokenHandle())
-        const URL = config.default.url + '/wxmp'+ url + (method === 'GET' ? params : '')
+        const URL = config.url + '/wxmp'+ url + (method === 'GET' ? params : '')
         //网络请求
         uni.request({
             header: {
@@ -154,7 +154,7 @@ module.exports = {
 };
 ```
 ```js
-
+新建api.js文件
 const {Get,http,Post} = require("@/request/index");
 
 export default{
@@ -172,5 +172,18 @@ export default{
     import api from '@/request/api.js'
     api.login(data).then(res=>{})
 ```
+---
+```js
+或者在main.js中把封装的方法挂载到全局对象上
+const {Get,http,Post} = require("./request/index");
+ 
+Vue.prototype.$http = http
+Vue.prototype.$get = Get
+Vue.prototype.$post = Post
+
+页面使用：
+this.$post('/login/login', data).then(res => {}).catch(err=>{})
+```
+
 
 
