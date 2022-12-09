@@ -50,3 +50,21 @@ tags:
 
 ### 初始化仓库:
 `git init`
+
+### 本地项目推送到两个Git地址
+方法一：添加另外一个git地址
+`git remote add origin2 http://xx.git    // origin2可以自定义`
+拉取另外一个git地址上的数据源
+`git pull origin2 master --allow-unrelated-histories   （--allow-unrelated-histories是为了解决冲突）`
+本地项目推送到另外一个地址中
+`git push origin2`
+每次可以分开提交
+`git push`
+`git push origin2`
+查看此时的包括两个远程地址:git remote -v
+删除远程地址:git remote rm origin2
+方法二：给origin 增加一个可以push的地址
+`git remote set-url --add origin http://xx.git   //给origin添加一个远程push地址，这样一次push就能同时push到两个地址上面`
+`git remote -v //查看是否多了一条push地址（这个可不执行）`
+`git push origin master -f    // 如果第一次推不上去代码，可以使用强推的方式`
+删除添加的路径的方法:`git remote set-url --delete origin http://xx.git`
