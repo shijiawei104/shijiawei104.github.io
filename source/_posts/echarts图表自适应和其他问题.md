@@ -27,14 +27,15 @@ window.addEventListener("resize", () => {
 
 报错二：
 `TypeError: Cannot read properties of undefined (reading 'getAttribute')`
-解决：
-主要原因是离开当前页面没有清除自适应事件：
+解决： 1.主要原因是离开当前页面没有清除自适应事件：
 
 ```js
 destroyed () {
     window.removeEventListener('resize', this.chart)
 },
 ```
+
+2.如果清除自适应事件还是报错，原因就是 dom 元素没有准备完毕，echarts 渲染数据与 dom 元素异步问题
 
 ### 2.echarts 图表无数据时展示"暂无数据"
 
@@ -141,18 +142,17 @@ Vue.directive("on-echart-resize", directive);
 
 在页面中使用
 
-```js
+```vue
 <template>
   <div>
- 	 <div id="contentShow" ref="lineChart" v-on-echart-resize></div>
+    <div id="contentShow" ref="lineChart" v-on-echart-resize></div>
   </div>
 </template>
 <script>
 import "../../../utils/chartResize";
 export default {
   data() {
-    return {
-    };
+    return {};
   },
   mounted() {
     const elementResizeDetectorMaker = require("element-resize-detector");
@@ -165,9 +165,8 @@ export default {
       });
     });
   },
-  methods: {}
+  methods: {},
 };
 </script>
-<style scoped>
-</style>
+<style scoped></style>
 ```
