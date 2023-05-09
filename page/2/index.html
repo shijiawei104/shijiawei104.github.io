@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -146,6 +146,90 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/30/vue%E5%AF%BC%E5%87%BAexcel/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="ShiJiawei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时佳伟的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 时佳伟的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/30/vue%E5%AF%BC%E5%87%BAexcel/" class="post-title-link" itemprop="url">vue导出excel</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-30 13:42:37" itemprop="dateCreated datePublished" datetime="2022-11-30T13:42:37+08:00">2022-11-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-05-05 09:43:36" itemprop="dateModified" datetime="2023-05-05T09:43:36+08:00">2023-05-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装依赖</span></span><br><span class="line">npm install --save xlsx file-saver</span><br><span class="line"><span class="comment">// 引入</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FileSaver</span> <span class="keyword">from</span> <span class="string">&#x27;file-saver&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="variable constant_">XLSX</span> <span class="keyword">from</span> <span class="string">&#x27;xlsx&#x27;</span></span><br><span class="line"><span class="comment">/** 导出表格 */</span></span><br><span class="line">      <span class="title function_">handleExportExcel</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> xname = <span class="string">&#x27;表格名称.xlsx&#x27;</span></span><br><span class="line">        <span class="keyword">var</span> xlsxParam = &#123; <span class="attr">raw</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">        <span class="comment">/* 从表生成工作簿对象 */</span></span><br><span class="line">        <span class="keyword">var</span> wb = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">table_to_book</span>(</span><br><span class="line">          <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#out-table&quot;</span>),</span><br><span class="line">          xlsxParam</span><br><span class="line">        );</span><br><span class="line">        <span class="comment">/* 获取二进制字符串作为输出 */</span></span><br><span class="line">        <span class="keyword">var</span> wbout = <span class="variable constant_">XLSX</span>.<span class="title function_">write</span>(wb, &#123;</span><br><span class="line">          <span class="attr">bookType</span>: <span class="string">&quot;xlsx&quot;</span>,</span><br><span class="line">          <span class="attr">bookSST</span>: <span class="literal">true</span>,</span><br><span class="line">          <span class="attr">type</span>: <span class="string">&quot;array&quot;</span>,</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(</span><br><span class="line">            <span class="comment">//Blob 对象表示一个不可变、原始数据的类文件对象。</span></span><br><span class="line">            <span class="comment">//Blob 表示的不一定是JavaScript原生格式的数据。</span></span><br><span class="line">            <span class="comment">//File 接口基于Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件。</span></span><br><span class="line">            <span class="comment">//返回一个新创建的 Blob 对象，其内容由参数中给定的数组串联组成。</span></span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">Blob</span>([wbout], &#123; <span class="attr">type</span>: <span class="string">&quot;application/octet-stream&quot;</span> &#125;),</span><br><span class="line">            <span class="comment">//设置导出文件名称</span></span><br><span class="line">            xname</span><br><span class="line">          );</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="variable language_">console</span> !== <span class="string">&quot;undefined&quot;</span>) <span class="variable language_">console</span>.<span class="title function_">log</span>(e, wbout);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> wbout</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
