@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -146,6 +146,76 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/06/19/vue3-html2canvas%E5%AF%BC%E5%87%BApng%E5%9B%BE%E7%89%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="ShiJiawei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时佳伟的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 时佳伟的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/06/19/vue3-html2canvas%E5%AF%BC%E5%87%BApng%E5%9B%BE%E7%89%87/" class="post-title-link" itemprop="url">vue3+html2canvas导出png图片</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-06-19 11:32:07 / 修改时间：11:34:34" itemprop="dateCreated datePublished" datetime="2023-06-19T11:32:07+08:00">2023-06-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> html2canvas <span class="keyword">from</span> <span class="string">&quot;html2canvas&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> png = <span class="title function_">ref</span>();</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">exportPNG</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">// html2canvas配置项</span></span><br><span class="line">  <span class="keyword">const</span> ops = &#123;</span><br><span class="line">    <span class="comment">// 提高图片质量</span></span><br><span class="line">    <span class="attr">scale</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="comment">// 图片跨域</span></span><br><span class="line">    <span class="attr">useCORS</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">allowTaint</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// 分辨率</span></span><br><span class="line">    <span class="attr">dpi</span>: <span class="number">300</span>,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="title function_">html2canvas</span>(png.<span class="property">value</span>, ops).<span class="title function_">then</span>(<span class="function">(<span class="params">canvas</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> imgUrl = canvas.<span class="title function_">toDataURL</span>(<span class="string">&quot;image/png&quot;</span>);</span><br><span class="line">    <span class="keyword">const</span> a = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">    a.<span class="property">style</span>.<span class="property">display</span> = <span class="string">&quot;none&quot;</span>;</span><br><span class="line">    a.<span class="property">href</span> = imgUrl;</span><br><span class="line">    a.<span class="title function_">setAttribute</span>(<span class="string">&quot;download&quot;</span>, <span class="string">&quot;图片名称&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> a.<span class="property">download</span> === <span class="string">&quot;undefined&quot;</span>) &#123;</span><br><span class="line">      a.<span class="title function_">setAttribute</span>(<span class="string">&quot;target&quot;</span>, <span class="string">&quot;_blank&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(a);</span><br><span class="line">    a.<span class="title function_">click</span>();</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">removeChild</span>(a);</span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">URL</span>.<span class="title function_">revokeObjectURL</span>(imgUrl);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -840,84 +910,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/08/js%E4%B8%ADObject%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="ShiJiawei">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="时佳伟的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 时佳伟的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/08/js%E4%B8%ADObject%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">js中Object方法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-12-08 15:38:16" itemprop="dateCreated datePublished" datetime="2022-12-08T15:38:16+08:00">2022-12-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-05-05 09:43:36" itemprop="dateModified" datetime="2023-05-05T09:43:36+08:00">2023-05-05</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45378746/article/details/124334375">https://blog.csdn.net/qq_45378746/article/details/124334375</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
