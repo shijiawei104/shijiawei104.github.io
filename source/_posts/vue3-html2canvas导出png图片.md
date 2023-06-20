@@ -8,6 +8,7 @@ tags:
 import html2canvas from "html2canvas";
 const png = ref();
 const exportPNG = () => {
+  const refpng: any = document.getElementById("png");
   // html2canvas配置项
   const ops = {
     // 提高图片质量
@@ -17,6 +18,12 @@ const exportPNG = () => {
     allowTaint: false,
     // 分辨率
     dpi: 300,
+    // 解决导出的内容有横向滚动条
+    width: refpng.scrollWidth,
+    windowWidth: refpng.scrollWidth,
+    // 解决导出的内容有竖向滚动条
+    height: refpng.scrollHeight,
+    windowHeight: refpng.scrollHeight,
   };
   html2canvas(png.value, ops).then((canvas) => {
     const imgUrl = canvas.toDataURL("image/png");
