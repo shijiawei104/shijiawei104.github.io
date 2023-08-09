@@ -170,3 +170,24 @@ export default {
 </script>
 <style scoped></style>
 ```
+
+### 4.[ECharts] There is a chart instance already initialized on the dom.
+
+原因：在同一个页面使用一个 echarts，重复创建
+
+```js
+let myChart: any;
+// 获取dom
+let main: any = document.getElementById("myChart");
+// 获取 dom 容器上的实例。
+let existInstance = echarts.getInstanceByDom(main);
+// 判断是否有实例
+if (existInstance) {
+  if (true) {
+    // 销毁
+    echarts.dispose(existInstance);
+  }
+}
+// 重新创建
+myChart = echarts.init(main);
+```
