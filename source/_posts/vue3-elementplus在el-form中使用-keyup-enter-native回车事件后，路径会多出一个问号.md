@@ -4,7 +4,7 @@ date: 2023-08-09 09:30:27
 tags:
 ---
 
-#### 这是因为在 form 中使用@keyup.enter.native 默认提交该表单，要想阻止该事件，需要在 el-form 上添加@submit.native.prevent 即可
+#### 这是因为在 el-form 中使用@keyup.enter.native 默认提交该表单，要想阻止该事件，需要在 el-form 上添加@submit.native.prevent 即可
 
 ```js
  <el-form @submit.native.prevent ref="searchFormRef" :inline="true" :model="queryFormData">
