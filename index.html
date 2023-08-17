@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -146,6 +146,76 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/17/%E4%BD%BF%E7%94%A8setTimeout%E5%92%8C%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%E6%8F%90%E4%BA%A4%E8%A1%A8%E5%8D%95%E5%90%8E%E5%9C%A8%E4%B8%80%E5%AE%9A%E6%97%B6%E9%97%B4%E5%86%85%E5%AE%9E%E6%97%B6%E8%8E%B7%E5%8F%96%E8%BF%94%E5%9B%9E%E7%8A%B6%E6%80%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="ShiJiawei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时佳伟的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 时佳伟的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/17/%E4%BD%BF%E7%94%A8setTimeout%E5%92%8C%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%E6%8F%90%E4%BA%A4%E8%A1%A8%E5%8D%95%E5%90%8E%E5%9C%A8%E4%B8%80%E5%AE%9A%E6%97%B6%E9%97%B4%E5%86%85%E5%AE%9E%E6%97%B6%E8%8E%B7%E5%8F%96%E8%BF%94%E5%9B%9E%E7%8A%B6%E6%80%81/" class="post-title-link" itemprop="url">使用setTimeout和递归实现提交表单后在一定时间内实时获取返回状态</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-08-17 10:52:35 / 修改时间：10:56:53" itemprop="dateCreated datePublished" datetime="2023-08-17T10:52:35+08:00">2023-08-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 应用场景：提交表单后获取提交完成状态，如果是自己想要的状态则跳转到指定页，该方法最多执行5次为15秒，5次后不管是不是等于想要的状态都会进行跳转</span></span><br><span class="line"><span class="keyword">const</span> time = <span class="title function_">ref</span>();</span><br><span class="line"><span class="keyword">const</span> stateNum = <span class="title function_">ref</span>(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getState</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (stateNum.<span class="property">value</span> &lt; <span class="number">6</span>) &#123;</span><br><span class="line">    time.<span class="property">value</span> = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">queryApplyApi</span>().<span class="title function_">then</span>(<span class="function">(<span class="params">res: any</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (res.<span class="property">state</span> === <span class="string">&quot;NEED_SIGN&quot;</span> || res.<span class="property">state</span> === <span class="string">&quot;REJECTED&quot;</span>) &#123;</span><br><span class="line">          <span class="built_in">clearTimeout</span>(time.<span class="property">value</span>);</span><br><span class="line">          router.<span class="title function_">push</span>(&#123; <span class="attr">path</span>: <span class="string">&quot;/merchant-state&quot;</span> &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          stateNum.<span class="property">value</span>++;</span><br><span class="line">          <span class="title function_">getState</span>();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">clearTimeout</span>(time.<span class="property">value</span>);</span><br><span class="line">    router.<span class="title function_">push</span>(&#123; <span class="attr">path</span>: <span class="string">&quot;/merchant-state&quot;</span> &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -780,104 +850,6 @@
     <div class="post-body" itemprop="articleBody">
           <h4 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h4><p>div 是不支持:focus 伪类 的，因为 div 等元素无法接受键盘或其他用户事件</p>
 <h4 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h4><p>div 元素添加 tabIndex 属性，使其能够支持:focus 伪类<br><code>&lt;div tabindex=&quot;1&quot;&gt;&lt;/div&gt;</code></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/22/echarts%E5%9B%BE%E8%A1%A8%E8%87%AA%E9%80%82%E5%BA%94%E5%92%8C%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="ShiJiawei">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="时佳伟的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 时佳伟的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/22/echarts%E5%9B%BE%E8%A1%A8%E8%87%AA%E9%80%82%E5%BA%94%E5%92%8C%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">echarts图表自适应和其他问题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-12-22 15:51:27" itemprop="dateCreated datePublished" datetime="2022-12-22T15:51:27+08:00">2022-12-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-08-09 15:27:12" itemprop="dateModified" datetime="2023-08-09T15:27:12+08:00">2023-08-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="1-使用-eCharts-提供的-resize-方法，监听图表容器的大小并改变图表大小"><a href="#1-使用-eCharts-提供的-resize-方法，监听图表容器的大小并改变图表大小" class="headerlink" title="1.使用 eCharts 提供的 resize()方法，监听图表容器的大小并改变图表大小"></a>1.使用 eCharts 提供的 resize()方法，监听图表容器的大小并改变图表大小</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 监听 resize 事件</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;resize&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">chart</span>.<span class="title function_">resize</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>报错如下：<br><code>Uncaught TypeError: Cannot read properties of undefined (reading &#39;resize&#39;)</code></p>
-<p>解决：<br>主要是 this 指向的问题，换成箭头函数即可解决：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;resize&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">chart</span>.<span class="title function_">resize</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>报错二：<br><code>TypeError: Cannot read properties of undefined (reading &#39;getAttribute&#39;)</code><br>解决： 1.主要原因是离开当前页面没有清除自适应事件：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">destroyed () &#123;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="title function_">removeEventListener</span>(<span class="string">&#x27;resize&#x27;</span>, <span class="variable language_">this</span>.<span class="property">chart</span>)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<p>2.如果清除自适应事件还是报错，原因就是 dom 元素没有准备完毕，echarts 渲染数据与 dom 元素异步问题</p>
-<h3 id="2-echarts-图表无数据时展示”暂无数据”"><a href="#2-echarts-图表无数据时展示”暂无数据”" class="headerlink" title="2.echarts 图表无数据时展示”暂无数据”"></a>2.echarts 图表无数据时展示”暂无数据”</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;test_chart&quot;</span> style=<span class="string">&quot;width: 600px;height:400px;&quot;</span>&gt;&lt;/div&gt;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> chartData = [<span class="number">5</span>, <span class="number">20</span>, <span class="number">36</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">20</span>];</span><br><span class="line"><span class="comment">// 基于准备好的dom，初始化echarts实例</span></span><br><span class="line"><span class="keyword">var</span> myChart = echarts.<span class="title function_">init</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;test_chart&quot;</span>));</span><br><span class="line"><span class="keyword">var</span> option;</span><br><span class="line"><span class="comment">// 指定图表的配置项和数据</span></span><br><span class="line"><span class="keyword">if</span> (chartData.<span class="property">length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="comment">//暂无数据</span></span><br><span class="line">  option = &#123;</span><br><span class="line">    <span class="attr">title</span>: &#123;</span><br><span class="line">      <span class="attr">text</span>: <span class="string">&quot;暂无数据&quot;</span>,</span><br><span class="line">      <span class="attr">x</span>: <span class="string">&quot;center&quot;</span>,</span><br><span class="line">      <span class="attr">y</span>: <span class="string">&quot;center&quot;</span>,</span><br><span class="line">      <span class="attr">textStyle</span>: &#123;</span><br><span class="line">        <span class="attr">fontSize</span>: <span class="number">14</span>,</span><br><span class="line">        <span class="attr">fontWeight</span>: <span class="string">&quot;normal&quot;</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  option = &#123;</span><br><span class="line">    <span class="attr">title</span>: &#123;</span><br><span class="line">      <span class="attr">text</span>: <span class="string">&quot;ECharts 入门示例&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">tooltip</span>: &#123;&#125;,</span><br><span class="line">    <span class="attr">legend</span>: &#123;</span><br><span class="line">      <span class="attr">data</span>: [<span class="string">&quot;销量&quot;</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">xAxis</span>: &#123;</span><br><span class="line">      <span class="attr">data</span>: [<span class="string">&quot;衬衫&quot;</span>, <span class="string">&quot;羊毛衫&quot;</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">yAxis</span>: &#123;&#125;,</span><br><span class="line">    <span class="attr">series</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;销量&quot;</span>,</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;bar&quot;</span>,</span><br><span class="line">        <span class="attr">data</span>: chartData, <span class="comment">//动态数据</span></span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用刚指定的配置项和数据显示图表。</span></span><br><span class="line">myChart.<span class="title function_">setOption</span>(option);</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-vue-使用-element-resize-detector-监听元素宽度变化来实现-echarts-的自适应"><a href="#3-vue-使用-element-resize-detector-监听元素宽度变化来实现-echarts-的自适应" class="headerlink" title="3.vue 使用 element-resize-detector 监听元素宽度变化来实现 echarts 的自适应"></a>3.vue 使用 element-resize-detector 监听元素宽度变化来实现 echarts 的自适应</h3><p>原文：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44090040/article/details/120910088">https://blog.csdn.net/weixin_44090040/article/details/120910088</a><br>当我们切换左侧菜单展示效果的时候，右侧内容会对应变宽，但此时的 echarts 并不能执行自适应效果，这是因为切换菜单展示效果并没有触发 window.onresize，所以为解决类似此问题，我们可使用 element-resize-detector。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install element-resize-detector --save</span><br></pre></td></tr></table></figure>
-
-<p>创建文件 chartResize.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> echarts <span class="keyword">from</span> <span class="string">&quot;echarts&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> elementResizeDetectorMaker <span class="keyword">from</span> <span class="string">&quot;element-resize-detector&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> version = <span class="string">&quot;0.0.1&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> compatible = <span class="regexp">/^2\./</span>.<span class="title function_">test</span>(<span class="title class_">Vue</span>.<span class="property">version</span>);</span><br><span class="line"><span class="keyword">if</span> (!compatible) &#123;</span><br><span class="line">  <span class="title class_">Vue</span>.<span class="property">util</span>.<span class="title function_">warn</span>(</span><br><span class="line">    <span class="string">&quot;vue echarts resize directive &quot;</span> +</span><br><span class="line">      version +</span><br><span class="line">      <span class="string">&quot; only supports Vue 2.x, and does not support Vue &quot;</span> +</span><br><span class="line">      <span class="title class_">Vue</span>.<span class="property">version</span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> <span class="variable constant_">HANDLER</span> = <span class="string">&quot;_vue_echarts_resize_handler&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">bind</span>(<span class="params">el</span>) &#123;</span><br><span class="line">  <span class="title function_">unbind</span>(el);</span><br><span class="line">  el[<span class="variable constant_">HANDLER</span>] = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> chart = echarts.<span class="title function_">getInstanceByDom</span>(el);</span><br><span class="line">    <span class="keyword">if</span> (!chart) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    chart.<span class="title function_">resize</span>();</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">//监听window窗体变化，更新echarts大小</span></span><br><span class="line">  <span class="comment">//window.addEventListener(&quot;resize&quot;, el[HANDLER])</span></span><br><span class="line">  <span class="comment">//监听绑定的div大小变化，更新echarts大小</span></span><br><span class="line">  <span class="title function_">elementResizeDetectorMaker</span>().<span class="title function_">listenTo</span>(el, el[<span class="variable constant_">HANDLER</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">unbind</span>(<span class="params">el</span>) &#123;</span><br><span class="line">  <span class="comment">//window.removeEventListener(&quot;resize&quot;, el[HANDLER]);</span></span><br><span class="line">  <span class="title function_">elementResizeDetectorMaker</span>().<span class="title function_">removeListener</span>(el, el[<span class="variable constant_">HANDLER</span>]);</span><br><span class="line">  <span class="keyword">delete</span> el[<span class="variable constant_">HANDLER</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> directive = &#123;</span><br><span class="line">  <span class="attr">bind</span>: bind,</span><br><span class="line">  <span class="attr">unbind</span>: unbind,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">directive</span>(<span class="string">&quot;on-echart-resize&quot;</span>, directive);</span><br></pre></td></tr></table></figure>
-
-<p>在页面中使用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div id=&quot;contentShow&quot; ref=&quot;lineChart&quot; v-on-echart-resize&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &quot;../../../utils/chartResize&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;&#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    const elementResizeDetectorMaker = require(&quot;element-resize-detector&quot;);</span><br><span class="line">    let erd = elementResizeDetectorMaker();</span><br><span class="line">    erd.listenTo(this.$refs.lineChart, () =&gt; &#123;</span><br><span class="line">      this.$nextTick(function () &#123;</span><br><span class="line">        const lineChart = this.$echarts.init(this.$refs.lineChart);</span><br><span class="line">        //使echarts尺寸重置</span><br><span class="line">        lineChart.resize();</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;&#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style scoped&gt;&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-ECharts-There-is-a-chart-instance-already-initialized-on-the-dom"><a href="#4-ECharts-There-is-a-chart-instance-already-initialized-on-the-dom" class="headerlink" title="4.[ECharts] There is a chart instance already initialized on the dom."></a>4.[ECharts] There is a chart instance already initialized on the dom.</h3><p>原因：在同一个页面使用一个 echarts，重复创建</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">myChart</span>: any;</span><br><span class="line"><span class="comment">// 获取dom</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">main</span>: any = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myChart&quot;</span>);</span><br><span class="line"><span class="comment">// 获取 dom 容器上的实例。</span></span><br><span class="line"><span class="keyword">let</span> existInstance = echarts.<span class="title function_">getInstanceByDom</span>(main);</span><br><span class="line"><span class="comment">// 判断是否有实例</span></span><br><span class="line"><span class="keyword">if</span> (existInstance) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="comment">// 销毁</span></span><br><span class="line">    echarts.<span class="title function_">dispose</span>(existInstance);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 重新创建</span></span><br><span class="line">myChart = echarts.<span class="title function_">init</span>(main);</span><br></pre></td></tr></table></figure>
 
       
     </div>
