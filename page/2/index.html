@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -146,6 +146,87 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/vue3-ts%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="ShiJiawei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时佳伟的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 时佳伟的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/vue3-ts%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">vue3+ts报错处理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 09:41:27" itemprop="dateCreated datePublished" datetime="2023-05-09T09:41:27+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-08-11 10:43:05" itemprop="dateModified" datetime="2023-08-11T10:43:05+08:00">2023-08-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="1-类型“never”上不存在属性“xxx”"><a href="#1-类型“never”上不存在属性“xxx”" class="headerlink" title="1.类型“never”上不存在属性“xxx”"></a>1.类型“never”上不存在属性“xxx”</h4><h4 id="类型“any”的参数不能赋给类型“never”的参数"><a href="#类型“any”的参数不能赋给类型“never”的参数" class="headerlink" title="类型“any”的参数不能赋给类型“never”的参数"></a>类型“any”的参数不能赋给类型“never”的参数</h4><p>解决办法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = <span class="title function_">reactive</span>(&#123;</span><br><span class="line">  <span class="attr">list</span>: [] <span class="keyword">as</span> any[] <span class="comment">// 属性需要做类型断言处理</span></span><br><span class="line">&#125;);<span class="string">``</span><span class="string">`</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-引入第三方模块报错"><a href="#2-引入第三方模块报错" class="headerlink" title="2.引入第三方模块报错"></a>2.引入第三方模块报错</h4><p>Could not find a declaration file for module ‘xxx‘. vue + ts<br>解决办法：</p>
+<p>在 shims-vue.d.ts 文件中加入代码 declare module ‘引入的模块名称’</p>
+<p>或者在安装时 npm i –save @types/插件名称</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -883,98 +964,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/28/uniapp-request%E5%B0%81%E8%A3%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="ShiJiawei">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="时佳伟的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 时佳伟的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/28/uniapp-request%E5%B0%81%E8%A3%85/" class="post-title-link" itemprop="url">uniapp request封装</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-11-28 15:14:11" itemprop="dateCreated datePublished" datetime="2022-11-28T15:14:11+08:00">2022-11-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-05-05 09:43:36" itemprop="dateModified" datetime="2023-05-05T09:43:36+08:00">2023-05-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> config <span class="keyword">from</span> <span class="string">&#x27;@/config/index.js&#x27;</span> <span class="comment">// 请求的base URL</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getTokenHandle</span> = (<span class="params"></span>) =&gt; &#123;  </span><br><span class="line">    <span class="keyword">return</span> uni.<span class="title function_">getStorageSync</span>(<span class="string">&#x27;token&#x27;</span>)  <span class="comment">// 获取登录用户token</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// // 判断是否有token,没有跳转到登录页</span></span><br><span class="line"><span class="comment">//    if (!getTokenHandle) &#123;</span></span><br><span class="line"><span class="comment">//        uni.reLaunch(&#123;</span></span><br><span class="line"><span class="comment">//          url: &quot;/pages/signIn/signIn&quot;,</span></span><br><span class="line"><span class="comment">//        &#125;);</span></span><br><span class="line"><span class="comment">//    &#125; else &#123;</span></span><br><span class="line"><span class="comment">//      uni.reLaunch(&#123;</span></span><br><span class="line"><span class="comment">//        url: &quot;/pages/power-station/index&quot;,</span></span><br><span class="line"><span class="comment">//      &#125;);</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"><span class="comment">// 请求参数处理</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">requestParam</span> = (<span class="params">data, method</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> str = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">if</span> (method == <span class="string">&#x27;post&#x27;</span>) &#123;</span><br><span class="line">        str = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data);</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (method == <span class="string">&#x27;get&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> data) &#123;</span><br><span class="line">            str += i + <span class="string">&#x27;=&#x27;</span> + data[i] + <span class="string">&#x27;&amp;&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        str = str.<span class="property">length</span> &gt; <span class="number">0</span> ? str.<span class="title function_">substring</span>(<span class="number">0</span>, str.<span class="property">length</span> - <span class="number">1</span>) : <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">encodeURI</span>(str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment">// 请求封装</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">sendRequest</span> = (<span class="params">method = <span class="string">&#x27;GET&#x27;</span>, url = <span class="string">&#x27;&#x27;</span>, params = &#123;&#125;, </span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="keyword">async</span> (resolve, reject) =&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> token = <span class="keyword">await</span> <span class="title function_">getTokenHandle</span>();</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getTokenHandle</span>())</span><br><span class="line">        <span class="keyword">const</span> <span class="variable constant_">URL</span> = config.<span class="property">url</span> + <span class="string">&#x27;/wxmp&#x27;</span>+ url + (method === <span class="string">&#x27;GET&#x27;</span> ? params : <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        <span class="comment">//网络请求</span></span><br><span class="line">        uni.<span class="title function_">request</span>(&#123;</span><br><span class="line">            <span class="attr">header</span>: &#123;</span><br><span class="line">                <span class="title class_">Authorization</span>: <span class="string">&#x27;Bearer &#x27;</span> + token</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">url</span>: <span class="variable constant_">URL</span>,</span><br><span class="line">            method,</span><br><span class="line">            <span class="attr">data</span>: method === <span class="string">&#x27;GET&#x27;</span> ? &#123;&#125; : params,</span><br><span class="line">            <span class="attr">success</span>: <span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">                <span class="comment">// 响应403拦截跳转登录</span></span><br><span class="line">                <span class="comment">// if (res.statusCode == 200 &amp;&amp; res.data.status === 403) &#123;</span></span><br><span class="line">                <span class="comment">//     resInterceptHandle()</span></span><br><span class="line">                <span class="comment">//     return</span></span><br><span class="line">                <span class="comment">// &#125;</span></span><br><span class="line">                <span class="comment">// 服务器返回数据</span></span><br><span class="line">                <span class="keyword">if</span> (res.<span class="property">statusCode</span> == <span class="number">200</span>) &#123;</span><br><span class="line">                    <span class="comment">// resolve(res.data);</span></span><br><span class="line">					<span class="keyword">if</span>(res.<span class="property">data</span>.<span class="property">code</span>==<span class="number">401</span>&amp;&amp;res.<span class="property">data</span>.<span class="property">msg</span>==<span class="string">&quot;账号未登录&quot;</span>)&#123;</span><br><span class="line">						uni.<span class="title function_">showToast</span>(&#123;</span><br><span class="line">							<span class="attr">icon</span>: <span class="string">&#x27;none&#x27;</span>,</span><br><span class="line">							<span class="attr">title</span>: res.<span class="property">data</span>.<span class="property">msg</span>,</span><br><span class="line">							<span class="attr">duration</span>: <span class="number">2000</span>,</span><br><span class="line">							<span class="attr">mask</span>: <span class="literal">true</span></span><br><span class="line">						&#125;);</span><br><span class="line">						uni.<span class="title function_">reLaunch</span>(&#123;</span><br><span class="line">						  <span class="attr">url</span>: <span class="string">&quot;/pages/signIn/signIn&quot;</span>,</span><br><span class="line">						&#125;);</span><br><span class="line">					&#125;<span class="keyword">else</span> <span class="keyword">if</span>(res.<span class="property">data</span>.<span class="property">code</span>!=<span class="number">0</span>)&#123;</span><br><span class="line">						uni.<span class="title function_">showToast</span>(&#123;</span><br><span class="line">							<span class="attr">icon</span>: <span class="string">&#x27;none&#x27;</span>,</span><br><span class="line">							<span class="attr">title</span>: res.<span class="property">data</span>.<span class="property">msg</span>,</span><br><span class="line">							<span class="attr">duration</span>: <span class="number">2000</span>,</span><br><span class="line">							<span class="attr">mask</span>: <span class="literal">true</span></span><br><span class="line">						&#125;);</span><br><span class="line">					&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">						<span class="title function_">resolve</span>(res.<span class="property">data</span>);</span><br><span class="line">					&#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`============<span class="subst">$&#123;method&#125;</span> 请求失败：============`</span>);</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">error</span>(</span><br><span class="line">                        <span class="string">&#x27;接口地址: &#x27;</span>,</span><br><span class="line">                        <span class="string">&#x27;【 &#x27;</span> + <span class="variable constant_">URL</span> + <span class="string">&#x27; 】&#x27;</span></span><br><span class="line">                    );</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;请求参数: &#x27;</span>, params);</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;返回结果: &#x27;</span>, res);</span><br><span class="line">                    uni.<span class="title function_">showToast</span>(&#123;</span><br><span class="line">                        <span class="attr">title</span>: res.<span class="property">data</span>.<span class="property">emsg</span>,</span><br><span class="line">                        <span class="attr">icon</span>: <span class="string">&#x27;none&#x27;</span>,</span><br><span class="line">                        <span class="attr">duration</span>: <span class="number">3000</span>,</span><br><span class="line">                        <span class="attr">mask</span>: <span class="literal">true</span></span><br><span class="line">                    &#125;);</span><br><span class="line">                    <span class="title function_">reject</span>(res);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">fail</span>: <span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">				uni.<span class="title function_">showToast</span>(&#123;</span><br><span class="line">				    <span class="attr">title</span>: <span class="string">&#x27;请求失败&#x27;</span>,</span><br><span class="line">				    <span class="attr">icon</span>: <span class="string">&#x27;none&#x27;</span>,</span><br><span class="line">				    <span class="attr">duration</span>: <span class="number">3000</span>,</span><br><span class="line">				    <span class="attr">mask</span>: <span class="literal">true</span></span><br><span class="line">				&#125;);</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`============<span class="subst">$&#123;method&#125;</span> 请求失败：============`</span>);</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">error</span>(</span><br><span class="line">                    <span class="string">&#x27;接口地址: &#x27;</span>,</span><br><span class="line">                    <span class="string">&#x27;【 &#x27;</span> + <span class="variable constant_">URL</span> + <span class="string">&#x27; 】&#x27;</span></span><br><span class="line">                );</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;请求参数: &#x27;</span>, params);</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;返回结果: &#x27;</span>, res);</span><br><span class="line">                <span class="title function_">reject</span>(res);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> promise;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment">// 封装post请求（url:请求接口； data：请求参数；）</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">httpPost</span> = <span class="keyword">async</span> (<span class="params">url, data</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> params = <span class="title function_">requestParam</span>(data, <span class="string">&#x27;post&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">sendRequest</span>(<span class="string">&#x27;POST&#x27;</span>, url, params)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 封装get请求（url:请求接口； data：请求参数；）</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">httpGet</span> = <span class="keyword">async</span> (<span class="params">url, data</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> params = data &amp;&amp; <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data) != <span class="string">&#x27;&#123;&#125;&#x27;</span> ?</span><br><span class="line">        <span class="string">&#x27;?&#x27;</span> + <span class="title function_">requestParam</span>(data, <span class="string">&#x27;get&#x27;</span>) :</span><br><span class="line">        <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">sendRequest</span>(<span class="string">&#x27;GET&#x27;</span>, url, params)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 自定义请求类型</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">http</span> = <span class="keyword">async</span> (<span class="params">params = &#123;</span></span><br><span class="line"><span class="params">    method: <span class="string">&#x27;GET&#x27;</span>,</span></span><br><span class="line"><span class="params">    url: <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="params">    data: &#123;&#125;</span></span><br><span class="line"><span class="params">&#125;</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">sendRequest</span>(params.<span class="property">method</span>, params.<span class="property">url</span>, params.<span class="property">data</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`自定义<span class="subst">$&#123;params.method&#125;</span>请求成功响应`</span>, res)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="title class_">Post</span>: httpPost,</span><br><span class="line">    <span class="title class_">Get</span>: httpGet,</span><br><span class="line">    <span class="attr">http</span>: http</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">新建api.<span class="property">js</span>文件</span><br><span class="line"><span class="keyword">const</span> &#123;<span class="title class_">Get</span>,http,<span class="title class_">Post</span>&#125; = <span class="built_in">require</span>(<span class="string">&quot;@/request/index&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">	<span class="comment">// 登录</span></span><br><span class="line">    <span class="title function_">login</span>(<span class="params">data</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Post</span>(<span class="string">&#x27;/auth/login&#x27;</span>, data);</span><br><span class="line">    &#125;,</span><br><span class="line">	<span class="comment">// 天气</span></span><br><span class="line">	<span class="title function_">weather</span>(<span class="params">data</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="title class_">Get</span>(<span class="string">&#x27;/weather/info&#x27;</span>,data);</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> api <span class="keyword">from</span> <span class="string">&#x27;@/request/api.js&#x27;</span></span><br><span class="line">api.<span class="title function_">login</span>(data).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
-<hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">或者在main.<span class="property">js</span>中把封装的方法挂载到全局对象上</span><br><span class="line"><span class="keyword">const</span> &#123;<span class="title class_">Get</span>,http,<span class="title class_">Post</span>&#125; = <span class="built_in">require</span>(<span class="string">&quot;./request/index&quot;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$http</span> = http</span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$get</span> = <span class="title class_">Get</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$post</span> = <span class="title class_">Post</span></span><br><span class="line"></span><br><span class="line">页面使用：</span><br><span class="line"><span class="variable language_">this</span>.$post(<span class="string">&#x27;/login/login&#x27;</span>, data).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;&#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span>=&gt;</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -988,7 +977,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
