@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -146,6 +146,82 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/06/19/vue3-html2canvas%E5%AF%BC%E5%87%BApng%E5%9B%BE%E7%89%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="ShiJiawei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时佳伟的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 时佳伟的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/06/19/vue3-html2canvas%E5%AF%BC%E5%87%BApng%E5%9B%BE%E7%89%87/" class="post-title-link" itemprop="url">vue3+html2canvas导出png图片</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-06-19 11:32:07" itemprop="dateCreated datePublished" datetime="2023-06-19T11:32:07+08:00">2023-06-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-06 14:11:43" itemprop="dateModified" datetime="2024-12-06T14:11:43+08:00">2024-12-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> html2canvas <span class="keyword">from</span> <span class="string">&quot;html2canvas&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> png = <span class="title function_">ref</span>();</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">exportPNG</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="attr">refpng</span>: any = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;png&quot;</span>);</span><br><span class="line">  <span class="comment">// html2canvas配置项</span></span><br><span class="line">  <span class="keyword">const</span> ops = &#123;</span><br><span class="line">    <span class="comment">// 提高图片质量</span></span><br><span class="line">    <span class="attr">scale</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="comment">// 图片跨域</span></span><br><span class="line">    <span class="attr">useCORS</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">allowTaint</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// 分辨率</span></span><br><span class="line">    <span class="attr">dpi</span>: <span class="number">300</span>,</span><br><span class="line">    <span class="comment">// 解决导出的内容有横向滚动条</span></span><br><span class="line">    <span class="attr">width</span>: refpng.<span class="property">scrollWidth</span>,</span><br><span class="line">    <span class="attr">windowWidth</span>: refpng.<span class="property">scrollWidth</span>,</span><br><span class="line">    <span class="comment">// 解决导出的内容有竖向滚动条</span></span><br><span class="line">    <span class="attr">height</span>: refpng.<span class="property">scrollHeight</span>,</span><br><span class="line">    <span class="attr">windowHeight</span>: refpng.<span class="property">scrollHeight</span>,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="title function_">html2canvas</span>(png.<span class="property">value</span>, ops).<span class="title function_">then</span>(<span class="function">(<span class="params">canvas</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> imgUrl = canvas.<span class="title function_">toDataURL</span>(<span class="string">&quot;image/png&quot;</span>);</span><br><span class="line">    <span class="keyword">const</span> a = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">    a.<span class="property">style</span>.<span class="property">display</span> = <span class="string">&quot;none&quot;</span>;</span><br><span class="line">    a.<span class="property">href</span> = imgUrl;</span><br><span class="line">    a.<span class="title function_">setAttribute</span>(<span class="string">&quot;download&quot;</span>, <span class="string">&quot;图片名称&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> a.<span class="property">download</span> === <span class="string">&quot;undefined&quot;</span>) &#123;</span><br><span class="line">      a.<span class="title function_">setAttribute</span>(<span class="string">&quot;target&quot;</span>, <span class="string">&quot;_blank&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(a);</span><br><span class="line">    a.<span class="title function_">click</span>();</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">removeChild</span>(a);</span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">URL</span>.<span class="title function_">revokeObjectURL</span>(imgUrl);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -872,94 +948,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/08/websocket%E7%BB%93%E5%90%88ftv-js%E5%AE%9E%E7%8E%B0%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD%E6%B5%81%E6%92%AD%E6%94%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="ShiJiawei">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="时佳伟的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 时佳伟的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/08/websocket%E7%BB%93%E5%90%88ftv-js%E5%AE%9E%E7%8E%B0%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD%E6%B5%81%E6%92%AD%E6%94%BE/" class="post-title-link" itemprop="url">websocket结合ftv.js实现视频直播流播放</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-12-08 08:45:40" itemprop="dateCreated datePublished" datetime="2022-12-08T08:45:40+08:00">2022-12-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-06 14:11:43" itemprop="dateModified" datetime="2024-12-06T14:11:43+08:00">2024-12-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>1.安装 <code>websocket： npm i reconnecting-websocket</code><br>  安装 <code>ftv.js：npm i flv.js -S</code><br>2.引入<br>       <code>import ReconnectingWebSocket from &#39;reconnecting-websocket&#39;;</code><br>       <code>import flvjs from &quot;flv.js&quot;;</code></p>
-<h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4><pre><code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span>  <span class="attr">width</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">height</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;videosmallone&quot;</span> <span class="attr">controls</span>  <span class="attr">preload</span>=<span class="string">&quot;auto&quot;</span> <span class="attr">muted</span>  <span class="attr">autoplay</span> <span class="attr">type</span>=<span class="string">&quot;rtmp/flv&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</code></pre>
-<h4 id="4-先websocket连接，与服务器建立实时通讯，当前端视频页面关闭时，后端可以实时接收，避免前端已经关闭视频流，后端没有及时接收还在一直传输，影响服务器性能"><a href="#4-先websocket连接，与服务器建立实时通讯，当前端视频页面关闭时，后端可以实时接收，避免前端已经关闭视频流，后端没有及时接收还在一直传输，影响服务器性能" class="headerlink" title="4. 先websocket连接，与服务器建立实时通讯，当前端视频页面关闭时，后端可以实时接收，避免前端已经关闭视频流，后端没有及时接收还在一直传输，影响服务器性能"></a>4. 先websocket连接，与服务器建立实时通讯，当前端视频页面关闭时，后端可以实时接收，避免前端已经关闭视频流，后端没有及时接收还在一直传输，影响服务器性能</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 创建 websocket 链接</span></span><br><span class="line">  <span class="title function_">createWebsocket</span>(<span class="params">id</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> httpURL = process.<span class="property">env</span>.<span class="property">VUE_APP_BASE_API</span>  </span><br><span class="line">  <span class="keyword">let</span> url = <span class="string">`ws://<span class="subst">$&#123;httpURL&#125;</span>/wsMonitoring/<span class="subst">$&#123;id&#125;</span>`</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">websocket</span> = <span class="keyword">new</span> <span class="title class_">ReconnectingWebSocket</span>(url)</span><br><span class="line">  <span class="comment">// 连接发生错误的回调方法</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">websocket</span>.<span class="property">onerror</span> = <span class="variable language_">this</span>.<span class="property">websocketOnerror</span>;</span><br><span class="line">  <span class="comment">// 连接成功建立的回调方法</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">websocket</span>.<span class="property">onopen</span> = <span class="variable language_">this</span>.<span class="property">websocketOnopen</span>;</span><br><span class="line">  <span class="comment">// 接收到消息的回调方法</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">websocket</span>.<span class="property">onmessage</span> = <span class="variable language_">this</span>.<span class="property">websocketOnmessage</span>;</span><br><span class="line">  <span class="comment">// 连接关闭的回调方法</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">websocket</span>.<span class="property">onclose</span> = <span class="variable language_">this</span>.<span class="property">websocketOnclose</span>;</span><br><span class="line">  <span class="comment">// 监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">websocket</span>.<span class="property">onbeforeunload</span> = <span class="variable language_">this</span>.<span class="property">websocketOnbeforeunload</span>;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 连接发生错误的回调方法</span></span><br><span class="line"><span class="title function_">websocketOnerror</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;连接发生错误的回调方法&#x27;</span>);</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 连接成功建立的回调方法</span></span><br><span class="line"><span class="title function_">websocketOnopen</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;连接成功建立的回调方法&#x27;</span>);</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 接收到消息的回调方法</span></span><br><span class="line"><span class="title function_">websocketOnmessage</span>(<span class="params">event</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;接收到消息的回调方法&#x27;</span>, event.<span class="property">data</span>);</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 连接关闭的回调方法</span></span><br><span class="line"><span class="title function_">websocketOnclose</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;连接关闭的回调方法&#x27;</span>);</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常</span></span><br><span class="line"><span class="title function_">websocketOnbeforeunload</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">closeWebSocket</span>();</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常&#x27;</span>);</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 关闭WebSocket连接</span></span><br><span class="line"><span class="title function_">closeWebSocket</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">websocket</span>.<span class="title function_">close</span>();</span><br><span class="line">&#125;,</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="5-视频流播放"><a href="#5-视频流播放" class="headerlink" title="5.视频流播放"></a>5.视频流播放</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ftv.js 视频播放 </span></span><br><span class="line"><span class="title function_">init</span>(<span class="params">val</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.$nextTick(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> videoElement = <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">videosmallone</span>; <span class="comment">// 获取到html中的video标签</span></span><br><span class="line">    <span class="keyword">if</span> (flvjs.<span class="title function_">isSupported</span>()) &#123;</span><br><span class="line">    <span class="comment">//进来先判断 player是否存在，如果存在，销毁掉它，不然会占用TCP名额</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">player</span> !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">player</span>.<span class="title function_">pause</span>();</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">player</span>.<span class="title function_">unload</span>();</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">player</span>.<span class="title function_">detachMediaElement</span>();</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">player</span>.<span class="title function_">destroy</span>();</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">player</span> = <span class="literal">null</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">player</span> = flvjs.<span class="title function_">createPlayer</span>( <span class="comment">//创建直播流，加载到DOM中去</span></span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">type</span>: <span class="string">&quot;flv&quot;</span>,</span><br><span class="line">          <span class="attr">url</span>: val, <span class="comment">//你的url地址</span></span><br><span class="line">          <span class="attr">isLive</span>: <span class="literal">true</span>, <span class="comment">//数据源是否为直播流</span></span><br><span class="line">          <span class="attr">hasAudio</span>: <span class="literal">false</span>, <span class="comment">//数据源是否包含有音频</span></span><br><span class="line">          <span class="attr">hasVideo</span>: <span class="literal">true</span>, <span class="comment">//数据源是否包含有视频</span></span><br><span class="line">          <span class="attr">enableStashBuffer</span>: <span class="literal">true</span>, <span class="comment">//是否启用缓存区</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">enableWorker</span>: <span class="literal">false</span>, <span class="comment">//不启用分离线程</span></span><br><span class="line">          <span class="attr">enableStashBuffer</span>: <span class="literal">false</span>, <span class="comment">//关闭IO隐藏缓冲区</span></span><br><span class="line">          <span class="attr">autoCleanupSourceBuffer</span>: <span class="literal">true</span>, <span class="comment">//自动清除缓存</span></span><br><span class="line">          <span class="attr">lazyLoad</span>: <span class="literal">false</span>,</span><br><span class="line">        &#125;</span><br><span class="line">      );</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">player</span>.<span class="title function_">attachMediaElement</span>(videoElement); <span class="comment">//放到dom中去</span></span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">player</span>.<span class="title function_">load</span>();<span class="comment">//准备完成</span></span><br><span class="line">      <span class="comment">//!!!!!!这里需要注意，有的时候load加载完成不一定可以播放，要是播放不成功，用settimeout 给下面的this.player.play() 延时几百毫秒再播放</span></span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">player</span>.<span class="title function_">play</span>();<span class="comment">//播放    </span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -973,7 +961,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
