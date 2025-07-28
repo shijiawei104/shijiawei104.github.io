@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -146,6 +146,121 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/23/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%AD%A5%E9%AA%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="ShiJiawei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时佳伟的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 时佳伟的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/23/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%AD%A5%E9%AA%A4/" class="post-title-link" itemprop="url">git常用命令步骤</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-23 20:13:48" itemprop="dateCreated datePublished" datetime="2022-11-23T20:13:48+08:00">2022-11-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-06 14:11:43" itemprop="dateModified" datetime="2024-12-06T14:11:43+08:00">2024-12-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="1-克隆仓库"><a href="#1-克隆仓库" class="headerlink" title="1. 克隆仓库"></a>1. 克隆仓库</h3><p><code>git clone 仓库地址</code></p>
+<h3 id="2-创建自己的分支"><a href="#2-创建自己的分支" class="headerlink" title="2. 创建自己的分支"></a>2. 创建自己的分支</h3><p><code>git branch 分支名字</code></p>
+<h3 id="查看当前分支"><a href="#查看当前分支" class="headerlink" title="查看当前分支"></a>查看当前分支</h3><p><code>git branch -v</code></p>
+<h3 id="查看已有分支"><a href="#查看已有分支" class="headerlink" title="查看已有分支"></a>查看已有分支</h3><p><code>git branch</code></p>
+<h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3><p><code>git branch -d 分支名字</code></p>
+<h3 id="3-将文件添加到缓存-代表全部添加"><a href="#3-将文件添加到缓存-代表全部添加" class="headerlink" title="3. 将文件添加到缓存 (. 代表全部添加)"></a>3. 将文件添加到缓存 (. 代表全部添加)</h3><p><code>git add .</code></p>
+<h3 id="4-提交到版本库"><a href="#4-提交到版本库" class="headerlink" title="4. 提交到版本库"></a>4. 提交到版本库</h3><p><code>git commit -m &quot;提交的描述信息&quot;</code></p>
+<h3 id="5-将本地内容推送到远程仓库"><a href="#5-将本地内容推送到远程仓库" class="headerlink" title="5. 将本地内容推送到远程仓库"></a>5. 将本地内容推送到远程仓库</h3><p><code>git push origin 分支名字</code></p>
+<h3 id="u-若当前分支与多个主机存在追踪关系"><a href="#u-若当前分支与多个主机存在追踪关系" class="headerlink" title="-u 若当前分支与多个主机存在追踪关系"></a>-u 若当前分支与多个主机存在追踪关系</h3><p><code>git push -u origin 分支名字</code></p>
+<h3 id="f-强制将本地的修改覆盖了远程仓库的版本，将其他人的-commit-都冲掉，而且无法使用通常的-git-reset-方式回退"><a href="#f-强制将本地的修改覆盖了远程仓库的版本，将其他人的-commit-都冲掉，而且无法使用通常的-git-reset-方式回退" class="headerlink" title="-f 强制将本地的修改覆盖了远程仓库的版本，将其他人的 commit 都冲掉，而且无法使用通常的 git reset 方式回退"></a>-f 强制将本地的修改覆盖了远程仓库的版本，将其他人的 commit 都冲掉，而且无法使用通常的 git reset 方式回退</h3><p><code>git push -u origin 分支名字 -f</code></p>
+<h3 id="6-切换分支"><a href="#6-切换分支" class="headerlink" title="6. 切换分支"></a>6. 切换分支</h3><p><code>git checkout 分支名字</code></p>
+<h3 id="7-合并分支-（区别：merge-会多出一次-merge-commit，rebase-不会，merge-的提交树是非线性的，rebase-的提交树是线性的（通过重写提交历史）；merge-在分支上都是好几条弯弯曲曲的样子，rebase-就一条直线）"><a href="#7-合并分支-（区别：merge-会多出一次-merge-commit，rebase-不会，merge-的提交树是非线性的，rebase-的提交树是线性的（通过重写提交历史）；merge-在分支上都是好几条弯弯曲曲的样子，rebase-就一条直线）" class="headerlink" title="7. 合并分支 （区别：merge 会多出一次 merge commit，rebase 不会，merge 的提交树是非线性的，rebase 的提交树是线性的（通过重写提交历史）；merge 在分支上都是好几条弯弯曲曲的样子，rebase 就一条直线）"></a>7. 合并分支 （区别：merge 会多出一次 merge commit，rebase 不会，merge 的提交树是非线性的，rebase 的提交树是线性的（通过重写提交历史）；merge 在分支上都是好几条弯弯曲曲的样子，rebase 就一条直线）</h3><p><code>git merge 分支名字</code><br><code>git rebase 分支名字</code></p>
+<h3 id="8-拉取远程仓库代码"><a href="#8-拉取远程仓库代码" class="headerlink" title="8. 拉取远程仓库代码"></a>8. 拉取远程仓库代码</h3><p><code>git pull origin 分支名字</code></p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他:"></a>其他:</h3><h3 id="关联远程仓库地址："><a href="#关联远程仓库地址：" class="headerlink" title="关联远程仓库地址："></a>关联远程仓库地址：</h3><p><code>git remote add origin http://xxxx@git</code></p>
+<h3 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库:"></a>初始化仓库:</h3><p><code>git init</code></p>
+<h3 id="本地项目推送到两个-Git-地址"><a href="#本地项目推送到两个-Git-地址" class="headerlink" title="本地项目推送到两个 Git 地址"></a>本地项目推送到两个 Git 地址</h3><p>方法一：添加另外一个 git 地址<br><code>git remote add origin2 http://xx.git    // origin2可以自定义</code><br>拉取另外一个 git 地址上的数据源<br><code>git pull origin2 master --allow-unrelated-histories   （--allow-unrelated-histories是为了解决冲突）</code><br>本地项目推送到另外一个地址中<br><code>git push origin2</code><br>每次可以分开提交<br><code>git push</code><br><code>git push origin2</code><br>查看此时的包括两个远程地址:git remote -v<br>删除远程地址:git remote rm origin2<br>方法二：给 origin 增加一个可以 push 的地址<br><code>git remote set-url --add origin http://xx.git   //给origin添加一个远程push地址，这样一次push就能同时push到两个地址上面</code><br><code>git remote -v //查看是否多了一条push地址（这个可不执行）</code><br><code>git push origin master -f    // 如果第一次推不上去代码，可以使用强推的方式</code><br>删除添加的路径的方法:<code>git remote set-url --delete origin http://xx.git</code></p>
+<h3 id="删除-github-中的提交历史记录"><a href="#删除-github-中的提交历史记录" class="headerlink" title="删除 github 中的提交历史记录"></a>删除 github 中的提交历史记录</h3><p>方法一：(推荐)</p>
+<h4 id="切换到一个脱离主分支的另外一条全新主分支，不用太在意叫什么，因为后面还会修改分支名称"><a href="#切换到一个脱离主分支的另外一条全新主分支，不用太在意叫什么，因为后面还会修改分支名称" class="headerlink" title="切换到一个脱离主分支的另外一条全新主分支，不用太在意叫什么，因为后面还会修改分支名称"></a>切换到一个脱离主分支的另外一条全新主分支，不用太在意叫什么，因为后面还会修改分支名称</h4><pre><code>git checkout --orphan latest_branch
+</code></pre>
+<h4 id="暂存所有改动过的文件，内容为当前旧分支的最新版本所有文件"><a href="#暂存所有改动过的文件，内容为当前旧分支的最新版本所有文件" class="headerlink" title="暂存所有改动过的文件，内容为当前旧分支的最新版本所有文件"></a>暂存所有改动过的文件，内容为当前旧分支的最新版本所有文件</h4><p>git add -A</p>
+<h4 id="提交更改"><a href="#提交更改" class="headerlink" title="提交更改"></a>提交更改</h4><p>git commit -am “commit message”</p>
+<h4 id="删除原始主分支"><a href="#删除原始主分支" class="headerlink" title="删除原始主分支"></a>删除原始主分支</h4><pre><code>git branch -D main
+</code></pre>
+<h4 id="将当前分支重命名为-main"><a href="#将当前分支重命名为-main" class="headerlink" title="将当前分支重命名为 main"></a>将当前分支重命名为 main</h4><pre><code>git branch -m main
+</code></pre>
+<h4 id="最后，强制更新您的存储库"><a href="#最后，强制更新您的存储库" class="headerlink" title="最后，强制更新您的存储库"></a>最后，强制更新您的存储库</h4><pre><code>git push -f origin main
+</code></pre>
+<p>方法二:<br>直接删除**.git** 文件夹，然后重新初始化 git，推送到新的仓库地址。<br>如果您确定要删除所有提交历史记录，只需删除.git 项目根目录中的目录（注意它是隐藏的）。然后在同一文件夹中初始化一个新的存储库并将其链接到 GitHub 存储库：</p>
+<p><code>git init</code><br><code>git remote add origin git@github.com:user/repo</code></p>
+<h4 id="现在提交您当前版本的代码"><a href="#现在提交您当前版本的代码" class="headerlink" title="现在提交您当前版本的代码"></a>现在提交您当前版本的代码</h4><p>git add *<br>git commit -am ‘message’</p>
+<h4 id="最后强制更新到-GitHub："><a href="#最后强制更新到-GitHub：" class="headerlink" title="最后强制更新到 GitHub："></a>最后强制更新到 GitHub：</h4><p>git push -f origin master</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

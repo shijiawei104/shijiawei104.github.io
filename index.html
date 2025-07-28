@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -146,6 +146,85 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/28/vue%E9%A1%B9%E7%9B%AE%E6%94%B9%E4%B8%BAelectron%E6%A1%8C%E9%9D%A2%E7%AB%AF%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E5%85%B6%E4%BB%96%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="ShiJiawei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时佳伟的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 时佳伟的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/28/vue%E9%A1%B9%E7%9B%AE%E6%94%B9%E4%B8%BAelectron%E6%A1%8C%E9%9D%A2%E7%AB%AF%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E5%85%B6%E4%BB%96%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="post-title-link" itemprop="url">vue项目改为electron桌面端的方法和其他注意事项</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-07-28 15:39:00 / 修改时间：16:03:13" itemprop="dateCreated datePublished" datetime="2025-07-28T15:39:00+08:00">2025-07-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="1-在项目根目录运行"><a href="#1-在项目根目录运行" class="headerlink" title="1.在项目根目录运行"></a>1.在项目根目录运行</h3><p>vue add electron-builder<br>如果报错找不到 vue 命令，需要先安装 vue cli:npm install -g @vue/cli</p>
+<h3 id="2-安装完成后在-package-json-里面会出现几条新命令："><a href="#2-安装完成后在-package-json-里面会出现几条新命令：" class="headerlink" title="2.安装完成后在 package.json 里面会出现几条新命令："></a>2.安装完成后在 package.json 里面会出现几条新命令：</h3><p>执行 npm run electron:serve 打开桌面端应用<br>执行 npm run electron:build 打包桌面端应用</p>
+<h3 id="修改打包后的-exe-图标和名称"><a href="#修改打包后的-exe-图标和名称" class="headerlink" title="修改打包后的 exe 图标和名称"></a>修改打包后的 exe 图标和名称</h3><p>1.首先安装图标生成器：npm i electron-icon-builder</p>
+<p>2.在 package.json 的 scripts 中添加一条命令并保存：<br>“electron:generate-icons”: “electron-icon-builder –input=./public/icon.png –output=build –flatten”<br>修改应用名称添加”productName”:”应用名称”</p>
+<p>3.将你准备的图片命名为 icon.png 并复制到 public 目录下：</p>
+<p>4.最后执行命令：npm run electron:generate-icons<br>生成的一系列图片在项目中多出来的 build 目录下的 icons 下：</p>
+<p>5.删除 dist_electron 文件夹，重新执行打包命令，npm run electron:build</p>
+<p>6.打包完成后 exe 图标和名称就会改变</p>
+<h3 id="修改桌面应用左上角的菜单显示，electron-默认为英文显示，如果需要更改或者删除需要在-background-js-文件中修改"><a href="#修改桌面应用左上角的菜单显示，electron-默认为英文显示，如果需要更改或者删除需要在-background-js-文件中修改" class="headerlink" title="修改桌面应用左上角的菜单显示，electron 默认为英文显示，如果需要更改或者删除需要在 background.js 文件中修改"></a>修改桌面应用左上角的菜单显示，electron 默认为英文显示，如果需要更改或者删除需要在 background.js 文件中修改</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; app, <span class="title class_">BrowserWindow</span>,  <span class="title class_">Menu</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;electron&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setChineseMenu</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> template = [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">label</span>: <span class="string">&#x27;文件&#x27;</span>,</span><br><span class="line">      <span class="attr">submenu</span>: [</span><br><span class="line">        &#123; <span class="attr">label</span>: <span class="string">&#x27;新建窗口&#x27;</span>, <span class="attr">accelerator</span>: <span class="string">&#x27;CmdOrCtrl+N&#x27;</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">label</span>: <span class="string">&#x27;关闭&#x27;</span>, <span class="attr">accelerator</span>: <span class="string">&#x27;CmdOrCtrl+W&#x27;</span>, <span class="attr">role</span>: <span class="string">&#x27;close&#x27;</span> &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">label</span>: <span class="string">&#x27;编辑&#x27;</span>,</span><br><span class="line">      <span class="attr">submenu</span>: [</span><br><span class="line">        &#123; <span class="attr">label</span>: <span class="string">&#x27;撤销&#x27;</span>, <span class="attr">accelerator</span>: <span class="string">&#x27;CmdOrCtrl+Z&#x27;</span>, <span class="attr">role</span>: <span class="string">&#x27;undo&#x27;</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">label</span>: <span class="string">&#x27;重做&#x27;</span>, <span class="attr">accelerator</span>: <span class="string">&#x27;Shift+CmdOrCtrl+Z&#x27;</span>, <span class="attr">role</span>: <span class="string">&#x27;redo&#x27;</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">type</span>: <span class="string">&#x27;separator&#x27;</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">label</span>: <span class="string">&#x27;剪切&#x27;</span>, <span class="attr">accelerator</span>: <span class="string">&#x27;CmdOrCtrl+X&#x27;</span>, <span class="attr">role</span>: <span class="string">&#x27;cut&#x27;</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">label</span>: <span class="string">&#x27;复制&#x27;</span>, <span class="attr">accelerator</span>: <span class="string">&#x27;CmdOrCtrl+C&#x27;</span>, <span class="attr">role</span>: <span class="string">&#x27;copy&#x27;</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">label</span>: <span class="string">&#x27;粘贴&#x27;</span>, <span class="attr">accelerator</span>: <span class="string">&#x27;CmdOrCtrl+V&#x27;</span>, <span class="attr">role</span>: <span class="string">&#x27;paste&#x27;</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">label</span>: <span class="string">&#x27;全选&#x27;</span>, <span class="attr">accelerator</span>: <span class="string">&#x27;CmdOrCtrl+A&#x27;</span>, <span class="attr">role</span>: <span class="string">&#x27;selectAll&#x27;</span> &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">label</span>: <span class="string">&#x27;视图&#x27;</span>,</span><br><span class="line">      <span class="attr">submenu</span>: [</span><br><span class="line">        &#123; <span class="attr">label</span>: <span class="string">&#x27;刷新&#x27;</span>, <span class="attr">accelerator</span>: <span class="string">&#x27;CmdOrCtrl+R&#x27;</span>, <span class="attr">click</span>: <span class="function">() =&gt;</span> &#123; <span class="title class_">BrowserWindow</span>.<span class="title function_">getFocusedWindow</span>().<span class="title function_">reload</span>() &#125; &#125;,</span><br><span class="line">        &#123; <span class="attr">label</span>: <span class="string">&#x27;开发者工具&#x27;</span>, <span class="attr">accelerator</span>: <span class="string">&#x27;CmdOrCtrl+Shift+I&#x27;</span>, <span class="attr">click</span>: <span class="function">() =&gt;</span> &#123; <span class="title class_">BrowserWindow</span>.<span class="title function_">getFocusedWindow</span>().<span class="property">webContents</span>.<span class="title function_">openDevTools</span>() &#125; &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">label</span>: <span class="string">&#x27;帮助&#x27;</span>,</span><br><span class="line">      <span class="attr">submenu</span>: [</span><br><span class="line">        &#123; <span class="attr">label</span>: <span class="string">&#x27;关于&#x27;</span>, <span class="attr">click</span>: <span class="function">() =&gt;</span> &#123; <span class="comment">/* 打开关于窗口 */</span> &#125; &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line">  <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">createWindow</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> win = <span class="keyword">new</span> <span class="title class_">BrowserWindow</span>(&#123;</span><br><span class="line">    <span class="attr">width</span>: <span class="number">800</span>,</span><br><span class="line">    <span class="attr">height</span>: <span class="number">600</span>,</span><br><span class="line">    <span class="attr">webPreferences</span>: &#123;</span><br><span class="line">      <span class="attr">nodeIntegration</span>: process.<span class="property">env</span>.<span class="property">ELECTRON_NODE_INTEGRATION</span>,</span><br><span class="line">      <span class="attr">contextIsolation</span>: !process.<span class="property">env</span>.<span class="property">ELECTRON_NODE_INTEGRATION</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="title function_">setChineseMenu</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="electron-中使用-location-href-‘-index’-会白屏，应修改为：-window-location-reload-“-index”"><a href="#electron-中使用-location-href-‘-index’-会白屏，应修改为：-window-location-reload-“-index”" class="headerlink" title="electron 中使用 location.href = ‘/index’ 会白屏，应修改为： window.location.reload(“/index”);"></a>electron 中使用 location.href = ‘/index’ 会白屏，应修改为： window.location.reload(“/index”);</h3><h3 id="electron-无法用-this-refs-dom-获取到-dom-元素，应改为：-document-getElementById-“dom”"><a href="#electron-无法用-this-refs-dom-获取到-dom-元素，应改为：-document-getElementById-“dom”" class="headerlink" title="electron 无法用 this.$refs.dom; 获取到 dom 元素，应改为： document.getElementById(“dom”);"></a>electron 无法用 this.$refs.dom; 获取到 dom 元素，应改为： document.getElementById(“dom”);</h3>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -917,83 +996,6 @@
     <div class="post-body" itemprop="articleBody">
           <h4 id="在进行身份证国徽面识别时，阿里云的识别接口返回的日期格式为”xxxx-xx-xx-xxxx-xx-xx”-通常我们需要再对该数据进行截取开始日期和结束日期进行显示选择，在使用-dayjs-“xxxx-xx-xx”-或者-new-Date-“xxxx-xx-xx”-根据需求转换时在-ios-端会报错-“invalid-Date”，这是因为-ios-端不支持这样的传参"><a href="#在进行身份证国徽面识别时，阿里云的识别接口返回的日期格式为”xxxx-xx-xx-xxxx-xx-xx”-通常我们需要再对该数据进行截取开始日期和结束日期进行显示选择，在使用-dayjs-“xxxx-xx-xx”-或者-new-Date-“xxxx-xx-xx”-根据需求转换时在-ios-端会报错-“invalid-Date”，这是因为-ios-端不支持这样的传参" class="headerlink" title="在进行身份证国徽面识别时，阿里云的识别接口返回的日期格式为”xxxx.xx.xx-xxxx.xx.xx”,通常我们需要再对该数据进行截取开始日期和结束日期进行显示选择，在使用 dayjs(“xxxx.xx.xx”)或者 new Date(“xxxx.xx.xx”)根据需求转换时在 ios 端会报错 “invalid Date”，这是因为 ios 端不支持这样的传参"></a>在进行身份证国徽面识别时，阿里云的识别接口返回的日期格式为”xxxx.xx.xx-xxxx.xx.xx”,通常我们需要再对该数据进行截取开始日期和结束日期进行显示选择，在使用 dayjs(“xxxx.xx.xx”)或者 new Date(“xxxx.xx.xx”)根据需求转换时在 ios 端会报错 “invalid Date”，这是因为 ios 端不支持这样的传参</h4><p>解决方法：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">formatdate</span> = (<span class="params">dateStr: string</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> dateStr.<span class="title function_">replace</span>(<span class="regexp">/\./g</span>, <span class="string">&quot;/&quot;</span>); <span class="comment">// 将 &quot;.&quot; 替换为 &quot;/&quot;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/11/%E4%BD%BF%E7%94%A8cookie%E5%AE%9E%E7%8E%B030%E5%A4%A9%E5%85%8D%E7%99%BB%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="ShiJiawei">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="时佳伟的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 时佳伟的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/11/%E4%BD%BF%E7%94%A8cookie%E5%AE%9E%E7%8E%B030%E5%A4%A9%E5%85%8D%E7%99%BB%E5%BD%95/" class="post-title-link" itemprop="url">使用cookie实现30天免登录</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-08-11 10:15:49" itemprop="dateCreated datePublished" datetime="2023-08-11T10:15:49+08:00">2023-08-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-06 14:11:43" itemprop="dateModified" datetime="2024-12-06T14:11:43+08:00">2024-12-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>安装：npm install js-cookie –save</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Cookies</span> <span class="keyword">from</span> <span class="string">&quot;js-cookie&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 存放</span></span><br><span class="line"><span class="comment">// 名称/参数/有效期</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">setToken</span> = (<span class="params">token: string</span>) =&gt; &#123;</span><br><span class="line">  <span class="title class_">Cookies</span>.<span class="title function_">set</span>(<span class="title class_">CacheKey</span>.<span class="property">TOKEN</span>, token, &#123; <span class="attr">expires</span>: <span class="number">30</span> &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">set方法支持的属性</span><br><span class="line">expires</span><br><span class="line">定义有效期。如果传入<span class="title class_">Number</span>，那么单位为天，你也可以传入一个<span class="title class_">Date</span>对象，表示有效期至<span class="title class_">Date</span>指定时间。默认情况下cookie有效期截止至用户退出浏览器。</span><br><span class="line">path</span><br><span class="line">string，表示此cookie对哪个地址可见。默认为”/”。</span><br><span class="line">domain</span><br><span class="line">string，表示此cookie对哪个域名可见。设置后cookie会对所有子域名可见。默认为对创建此cookie的域名和子域名可见。</span><br><span class="line">secure</span><br><span class="line"><span class="literal">true</span>或<span class="literal">false</span>，表示cookie传输是否仅支持https。默认为不要求协议必须为https。</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">getToken</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Cookies</span>.<span class="title function_">get</span>(<span class="title class_">CacheKey</span>.<span class="property">TOKEN</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
