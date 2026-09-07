@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="自 2023 年起，APP 也需要进行 ICP 备案。提交备案时，平台会要求填写 APP 的特征信息，主要包括：    平台 包名 &#x2F; Bundle ID 平台公钥 签名指纹    Android 软件包名（如 com.example.app） 以 10 进制或 16 进制填写 证书 MD5 值（16 进制）   iOS Bundle ID 以 10 进制或 16 进制填写 证书 SHA-1 值（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="app备案时安卓ios端获取应用公钥和签名方法">
+<meta property="og:url" content="http://example.com/2026/09/07/app%E5%A4%87%E6%A1%88%E6%97%B6%E5%AE%89%E5%8D%93ios%E7%AB%AF%E8%8E%B7%E5%8F%96%E5%BA%94%E7%94%A8%E5%85%AC%E9%92%A5%E5%92%8C%E7%AD%BE%E5%90%8D%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="时佳伟的个人博客">
+<meta property="og:description" content="自 2023 年起，APP 也需要进行 ICP 备案。提交备案时，平台会要求填写 APP 的特征信息，主要包括：    平台 包名 &#x2F; Bundle ID 平台公钥 签名指纹    Android 软件包名（如 com.example.app） 以 10 进制或 16 进制填写 证书 MD5 值（16 进制）   iOS Bundle ID 以 10 进制或 16 进制填写 证书 SHA-1 值（">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-09-07T02:00:00.000Z">
+<meta property="article:modified_time" content="2026-09-07T02:00:00.000Z">
+<meta property="article:author" content="ShiJiawei">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2026/09/07/app%E5%A4%87%E6%A1%88%E6%97%B6%E5%AE%89%E5%8D%93ios%E7%AB%AF%E8%8E%B7%E5%8F%96%E5%BA%94%E7%94%A8%E5%85%AC%E9%92%A5%E5%92%8C%E7%AD%BE%E5%90%8D%E6%96%B9%E6%B3%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2026/09/07/app%E5%A4%87%E6%A1%88%E6%97%B6%E5%AE%89%E5%8D%93ios%E7%AB%AF%E8%8E%B7%E5%8F%96%E5%BA%94%E7%94%A8%E5%85%AC%E9%92%A5%E5%92%8C%E7%AD%BE%E5%90%8D%E6%96%B9%E6%B3%95/","path":"2026/09/07/app备案时安卓ios端获取应用公钥和签名方法/","title":"app备案时安卓ios端获取应用公钥和签名方法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>app备案时安卓ios端获取应用公钥和签名方法 | 时佳伟的个人博客</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">时佳伟的个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Android-%E7%AB%AF"><span class="nav-number">1.</span> <span class="nav-text">一、Android 端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9C%80%E8%A6%81%E8%8E%B7%E5%8F%96%E7%9A%84%E4%B8%89%E9%A1%B9%E4%BF%A1%E6%81%AF"><span class="nav-number">1.1.</span> <span class="nav-text">需要获取的三项信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8-keytool%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%8C%E6%9C%89-keystore-%E6%96%87%E4%BB%B6%E6%97%B6%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">方法一：使用 keytool（推荐，有 keystore 文件时）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E4%BB%8E-APK-%E5%8C%85%E8%8E%B7%E5%8F%96%EF%BC%88%E6%B2%A1%E6%9C%89-keystore%EF%BC%8C%E5%8F%AA%E6%9C%89%E5%B7%B2%E7%AD%BE%E5%90%8D-APK-%E6%97%B6%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">方法二：从 APK 包获取（没有 keystore，只有已签名 APK 时）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%EF%BC%9A%E4%BD%BF%E7%94%A8-jadx-gui%EF%BC%88%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%EF%BC%8C%E9%80%82%E5%90%88%E4%B8%8D%E7%86%9F%E6%82%89%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%9A%84%E5%9C%BA%E6%99%AF%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">方法三：使用 jadx-gui（图形界面，适合不熟悉命令行的场景）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Studio-%E6%9F%A5%E7%9C%8B%E5%8C%85%E5%90%8D"><span class="nav-number">1.5.</span> <span class="nav-text">Android Studio 查看包名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81iOS-%E7%AB%AF"><span class="nav-number">2.</span> <span class="nav-text">二、iOS 端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9AApple-Developer-%E5%90%8E%E5%8F%B0%EF%BC%88%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">方法一：Apple Developer 后台（官方推荐）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9Aopenssl-%E8%A7%A3%E6%9E%90%E8%AF%81%E4%B9%A6%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">方法二：openssl 解析证书文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%EF%BC%9A%E4%BB%8E-IPA-%E8%8E%B7%E5%8F%96%EF%BC%88%E4%BB%85%E6%9C%89%E6%89%93%E5%8C%85%E5%A5%BD%E7%9A%84-IPA-%E6%97%B6%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">方法三：从 IPA 获取（仅有打包好的 IPA 时）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">三、常见问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ShiJiawei"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">ShiJiawei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives">
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/09/07/app%E5%A4%87%E6%A1%88%E6%97%B6%E5%AE%89%E5%8D%93ios%E7%AB%AF%E8%8E%B7%E5%8F%96%E5%BA%94%E7%94%A8%E5%85%AC%E9%92%A5%E5%92%8C%E7%AD%BE%E5%90%8D%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="ShiJiawei">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时佳伟的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="app备案时安卓ios端获取应用公钥和签名方法 | 时佳伟的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          app备案时安卓ios端获取应用公钥和签名方法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-09-07 10:00:00" itemprop="dateCreated datePublished" datetime="2026-09-07T10:00:00+08:00">2026-09-07</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>自 2023 年起，APP 也需要进行 ICP 备案。提交备案时，平台会要求填写 APP 的<strong>特征信息</strong>，主要包括：</p>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>包名 / Bundle ID</th>
+<th>平台公钥</th>
+<th>签名指纹</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Android</td>
+<td>软件包名（如 com.example.app）</td>
+<td>以 10 进制或 16 进制填写</td>
+<td>证书 <strong>MD5</strong> 值（16 进制）</td>
+</tr>
+<tr>
+<td>iOS</td>
+<td>Bundle ID</td>
+<td>以 10 进制或 16 进制填写</td>
+<td>证书 <strong>SHA-1</strong> 值（16 进制）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意：提取信息时使用的签名证书，必须与最终上架/发布 APK 或 IPA 时使用的证书<strong>完全一致</strong>，否则备案审核无法通过。</p>
+</blockquote>
+<hr>
+<h2 id="一、Android-端"><a href="#一、Android-端" class="headerlink" title="一、Android 端"></a>一、Android 端</h2><h3 id="需要获取的三项信息"><a href="#需要获取的三项信息" class="headerlink" title="需要获取的三项信息"></a>需要获取的三项信息</h3><ol>
+<li><strong>软件包名</strong>：在 <code>AndroidManifest.xml</code> 的 <code>package</code> 属性，或 Gradle 的 <code>applicationId</code></li>
+<li><strong>平台公钥</strong>：签名证书中的 RSA 公钥</li>
+<li><strong>签名 MD5 值</strong>：签名证书的 MD5 指纹</li>
+</ol>
+<h3 id="方法一：使用-keytool（推荐，有-keystore-文件时）"><a href="#方法一：使用-keytool（推荐，有-keystore-文件时）" class="headerlink" title="方法一：使用 keytool（推荐，有 keystore 文件时）"></a>方法一：使用 keytool（推荐，有 keystore 文件时）</h3><p>确保本机已安装 JDK，命令行可用 <code>keytool</code>。</p>
+<p><strong>1. 查看 keystore 基本信息（含 MD5，部分高版本 JDK 可能不显示 MD5）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -list -v -keystore your-release.keystore -<span class="built_in">alias</span> your-alias</span><br></pre></td></tr></table></figure>
+
+<p>输入 keystore 密码后，输出中包含：</p>
+<ul>
+<li><code>MD5</code>：即备案所需的签名 MD5 值</li>
+<li><code>SHA1</code>、<code>SHA256</code>：其他指纹信息</li>
+</ul>
+<p><strong>2. 高版本 JDK 不显示 MD5 时，用 openssl 计算</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -exportcert -<span class="built_in">alias</span> your-alias -keystore your-release.keystore | openssl dgst -md5</span><br></pre></td></tr></table></figure>
+
+<p>输出示例：<code>MD5(stdin)= cde9f6208d672b54b1dacc0b7029f5eb</code>，去掉冒号后即为 16 进制 MD5。</p>
+<p><strong>3. 导出公钥</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">keytool -exportcert -<span class="built_in">alias</span> your-alias -keystore your-release.keystore -file cert.cer</span><br><span class="line">openssl x509 -inform DER -<span class="keyword">in</span> cert.cer -pubkey -noout</span><br></pre></td></tr></table></figure>
+
+<p>将输出的公钥内容（去掉 <code>-----BEGIN PUBLIC KEY-----</code> 等头尾，或按备案平台要求填写 16 进制）提交即可。</p>
+<h3 id="方法二：从-APK-包获取（没有-keystore，只有已签名-APK-时）"><a href="#方法二：从-APK-包获取（没有-keystore，只有已签名-APK-时）" class="headerlink" title="方法二：从 APK 包获取（没有 keystore，只有已签名 APK 时）"></a>方法二：从 APK 包获取（没有 keystore，只有已签名 APK 时）</h3><p><strong>方式 A：keytool 直接读取 APK</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -printcert -jarfile app-release.apk</span><br></pre></td></tr></table></figure>
+
+<p><strong>方式 B：解压 APK + openssl（适用于 keytool 无 MD5 的情况）</strong></p>
+<p>APK 本质是 zip 文件，解压后在 <code>META-INF/</code> 目录下找到 <code>CERT.RSA</code>（或 <code>CERT.RSA</code> / <code>*.RSA</code>）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 解压 apk，进入 META-INF 目录</span></span><br><span class="line"><span class="comment"># 2. 从 CERT.RSA 提取证书</span></span><br><span class="line">openssl pkcs7 -inform DER -<span class="keyword">in</span> CERT.RSA -print_certs -out CERT.cert</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 查看 MD5 指纹（备案填这个，16 进制、去掉冒号）</span></span><br><span class="line">openssl x509 -<span class="keyword">in</span> CERT.cert -fingerprint -noout -md5</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 查看公钥</span></span><br><span class="line">openssl x509 -<span class="keyword">in</span> CERT.cert -pubkey -noout</span><br></pre></td></tr></table></figure>
+
+<p>小写无冒号格式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -<span class="keyword">in</span> CERT.cert -outform DER | openssl dgst -md5</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法三：使用-jadx-gui（图形界面，适合不熟悉命令行的场景）"><a href="#方法三：使用-jadx-gui（图形界面，适合不熟悉命令行的场景）" class="headerlink" title="方法三：使用 jadx-gui（图形界面，适合不熟悉命令行的场景）"></a>方法三：使用 jadx-gui（图形界面，适合不熟悉命令行的场景）</h3><ol>
+<li>下载 <a target="_blank" rel="noopener" href="https://github.com/skylot/jadx/releases">jadx</a>，运行 <code>jadx-gui</code></li>
+<li>打开已签名的 APK 文件</li>
+<li>点击 <code>AndroidManifest.xml</code> 查看<strong>包名</strong></li>
+<li>点击左侧 <strong>APK signature</strong>，可直接查看<strong>平台公钥</strong>和<strong>签名 MD5 值</strong></li>
+</ol>
+<p>macOS 可通过 Homebrew 安装：<code>brew install jadx</code>，然后运行 <code>jadx-gui</code>。</p>
+<h3 id="Android-Studio-查看包名"><a href="#Android-Studio-查看包名" class="headerlink" title="Android Studio 查看包名"></a>Android Studio 查看包名</h3><p>在 <code>app/build.gradle</code> 中查看 <code>applicationId</code>，即为备案所需的软件包名。</p>
+<hr>
+<h2 id="二、iOS-端"><a href="#二、iOS-端" class="headerlink" title="二、iOS 端"></a>二、iOS 端</h2><p>iOS 备案需要：<strong>Bundle ID</strong>、<strong>平台公钥</strong>、<strong>签名 SHA-1 值</strong>（注意：iOS 填 SHA-1，不是 MD5）。</p>
+<h3 id="方法一：Apple-Developer-后台（官方推荐）"><a href="#方法一：Apple-Developer-后台（官方推荐）" class="headerlink" title="方法一：Apple Developer 后台（官方推荐）"></a>方法一：Apple Developer 后台（官方推荐）</h3><ol>
+<li>使用 APP 对应的 Apple 开发者账号登录 <a target="_blank" rel="noopener" href="https://developer.apple.com/account">Apple Developer</a></li>
+<li>进入 <strong>Certificates, Identifiers &amp; Profiles</strong></li>
+<li><strong>Bundle ID</strong>：点击 <strong>Identifiers</strong>，<code>IDENTIFIER</code> 列即为 Bundle ID</li>
+<li><strong>公钥与 SHA-1</strong>：点击 <strong>Certificates</strong>，找到 APP 发布使用的<strong>分发证书</strong>（Distribution），下载 <code>.cer</code> 文件</li>
+<li>双击 <code>.cer</code> 安装到「钥匙串访问」，右键证书 → <strong>显示简介</strong> → <strong>详细信息</strong>：<ul>
+<li><strong>公钥</strong>：在详细信息中找到「公钥」相关字段，按备案平台要求填写（若显示不全，先点省略号，仍不全则复制已显示部分）</li>
+<li><strong>SHA-1</strong>：即备案要求的「签名 MD5 值」字段（iOS 实际填 SHA-1）</li>
+</ul>
+</li>
+</ol>
+<h3 id="方法二：openssl-解析证书文件"><a href="#方法二：openssl-解析证书文件" class="headerlink" title="方法二：openssl 解析证书文件"></a>方法二：openssl 解析证书文件</h3><p>下载 <code>.cer</code> 后，可用命令行查看：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 SHA-1 指纹</span></span><br><span class="line">openssl x509 -<span class="keyword">in</span> ios_distribution.cer -inform DER -fingerprint -noout -sha1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看公钥</span></span><br><span class="line">openssl x509 -<span class="keyword">in</span> ios_distribution.cer -inform DER -pubkey -noout</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法三：从-IPA-获取（仅有打包好的-IPA-时）"><a href="#方法三：从-IPA-获取（仅有打包好的-IPA-时）" class="headerlink" title="方法三：从 IPA 获取（仅有打包好的 IPA 时）"></a>方法三：从 IPA 获取（仅有打包好的 IPA 时）</h3><p>IPA 也是 zip 格式，解压后在 <code>Payload/xxx.app/</code> 内可找到 embedded.mobileprovision 等信息；但更可靠的方式仍是使用 Developer 后台下载与打包一致的<strong>分发证书</strong>。</p>
+<hr>
+<h2 id="三、常见问题"><a href="#三、常见问题" class="headerlink" title="三、常见问题"></a>三、常见问题</h2><p><strong>1. keytool 看不到 MD5？</strong></p>
+<p>Java 8 以后部分版本的 <code>keytool -list -v</code> 不再显示 MD5，请改用 <code>openssl dgst -md5</code> 或从 APK 的 <code>CERT.RSA</code> 提取。</p>
+<p><strong>2. 公钥格式怎么填？</strong></p>
+<p>不同备案平台要求略有差异，常见为去掉 PEM 头尾的 Base64，或填写 16 进制公钥模数。以备案平台页面说明为准。</p>
+<p><strong>3. uni-app / DCloud 云打包怎么获取？</strong></p>
+<ul>
+<li>使用<strong>自有证书</strong>打包：按上文 keystore 方法提取</li>
+<li>使用<strong>DCloud 公用证书</strong>：在 <a target="_blank" rel="noopener" href="https://dev.dcloud.net.cn/">DCloud 开发者中心</a> 查看应用详情，部分信息可直接获取；或使用 DCloud 提供的证书文件按 keytool 方法操作</li>
+</ul>
+<p><strong>4. 调试证书和发布证书不一致？</strong></p>
+<p>备案必须使用<strong>正式发布</strong>时所用的签名证书，debug 证书无效。</p>
+<hr>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/243/97789">腾讯云 ICP 备案 APP 特征信息填写参考规范</a></li>
+<li><a target="_blank" rel="noopener" href="https://ask.dcloud.net.cn/article/40734">DCloud APP 备案公钥、签名 MD5 获取方法</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/02/26/nginx%E5%8A%A8%E6%80%81%E8%BD%AC%E5%8F%91%E5%9C%B0%E5%9D%80/" rel="prev" title="nginx动态转发地址">
+                  <i class="fa fa-chevron-left"></i> nginx动态转发地址
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ShiJiawei</span>
+</div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://lib.baomitu.com/canvas-nest.js/1.0.1/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
